@@ -1,27 +1,20 @@
 {
-  "name": "feiweb",
-  "version": "0.1.0",
+  "name": "felicity-site",
+  "version": "2.6.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "start": "next start"
   },
   "dependencies": {
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "next": "15.5.0"
+    "next": "14.2.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
-    "eslint": "^9",
-    "eslint-config-next": "15.5.0",
-    "@eslint/eslintrc": "^3"
+    "@types/node": "24.3.0",
+    "@types/react": "19.1.11",
+    "typescript": "5.9.2"
   }
 }
