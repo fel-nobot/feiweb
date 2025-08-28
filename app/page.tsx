@@ -139,7 +139,7 @@ export default function HomePage() {
           }}
         >
           <span>© {new Date().getFullYear()} Felicity Yang</span>
-          <a className="navlink" href="mailto:felyqz@gmail.com">
+          <a className="navlink" href="mailto:qy68@cornell.edu">
             Contact
           </a>
         </div>
