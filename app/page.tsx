@@ -1,13 +1,24 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import PhotoCarousel from "../components/PhotoCarousel";
 
 export default function HomePage() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 900) setMenuOpen(false);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
   return (
     <main>
-      {/* Header / right-aligned nav + dark mode */}
+      {/* Header */}
       <header className="header">
         <div className="container">
           <nav
@@ -20,8 +31,12 @@ export default function HomePage() {
               gap: "1rem",
             }}
           >
-            <Link className="navlink" href="#about">About</Link>
-            <Link className="navlink" href="/story">Story</Link>
+            <Link className="navlink" href="#about">
+              About
+            </Link>
+            <Link className="navlink" href="/story">
+              Story
+            </Link>
             <ThemeToggle />
           </nav>
         </div>
@@ -34,32 +49,68 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* About + Portraits */}
+      {/* About */}
       <section id="about" className="section">
         <div className="container">
           <h2>About</h2>
 
-          <div className="split" style={{ marginTop: ".75rem" }}>
+          <div className="about-swap" style={{ marginTop: ".75rem" }}>
             {/* Text */}
-            <div>
+            <div className="about-text">
               <p>
-                Felicity Yang has built a global career spanning big retail, deep
-                tech, and high-growth startups. She began with Decathlon in China
-                and France before moving into autonomous driving in the U.S.,
-                where she partnered with founders and engineers to shape talent
-                strategies during a period of breakthrough innovation.
+                <a
+                  href="https://www.linkedin.com/in/felyang/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Felicity
+                </a>{" "}
+                has built a global career spanning big retail, deep tech, and
+                high-growth startups. She began with{" "}
+                <a
+                  href="https://sustainability.decathlon.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Decathlon
+                </a>{" "}
+                in China and France before moving into autonomous driving in the
+                U.S., where she partnered with founders and engineers to shape
+                talent strategies during a period of breakthrough innovation.
               </p>
               <p>
-                Felicity holds a Master’s degree in Industrial and Labor Relations
-                from Cornell University, widely recognized as the leading graduate
-                program for human resources and people strategy in the United
-                States. She also earned dual Bachelor’s degrees in English
-                Literature and Law.
+                Felicity holds a{" "}
+                <a
+                  href="https://www.ilr.cornell.edu/programs/graduate-degree-programs/master-industrial-and-labor-relations-milr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Master’s degree in Industrial and Labor Relations
+                </a>{" "}
+                from{" "}
+                <a
+                  href="https://www.cornell.edu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Cornell University
+                </a>
+                , widely recognized as the leading graduate program for human
+                resources and people strategy in the United States. She also
+                earned dual Bachelor’s degrees in English Literature and Law.
               </p>
               <p>
-                Since 2020, Felicity has been helping scale Weee! from fewer than
-                100 to over 1,000 employees, driving 40% annual revenue growth
-                while building a nationwide, multicultural community.
+                Since 2020, Felicity has been helping scale{" "}
+                <a
+                  href="https://www.sayweee.com/company/our-story"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Weee!
+                </a>{" "}
+                from fewer than 100 to over 1,000 employees, driving 40% annual
+                revenue growth while building a nationwide, multicultural
+                community.
               </p>
 
               <p style={{ marginTop: "1rem" }}>
@@ -67,15 +118,15 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* Portrait carousel */}
-            <div>
+            {/* Portrait Carousel */}
+            <div className="about-media">
               <PhotoCarousel />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer — keep tiny Contact link (no big bar) */}
+      {/* Footer */}
       <footer className="footer">
         <div
           className="container"
@@ -88,7 +139,9 @@ export default function HomePage() {
           }}
         >
           <span>© {new Date().getFullYear()} Felicity Yang</span>
-          <a className="navlink" href="mailto:felyqz@gmail.com">Contact</a>
+          <a className="navlink" href="mailto:felyqz@gmail.com">
+            Contact
+          </a>
         </div>
       </footer>
     </main>

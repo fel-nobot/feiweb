@@ -1,9 +1,10 @@
 :root {
   --bg: #ffffff;
-  --fg: #0f172a;
+  --fg: #1e293b;   /* softer charcoal text, not pure black */
   --muted: #64748b;
   --border: #e2e8f0;
   --alt: #f8fafc;
+  --accent: #334155; /* darker accent for hover */
 }
 
 :root.dark {
@@ -12,6 +13,7 @@
   --muted: #94a3b8;
   --border: #1f2a44;
   --alt: #0d1324;
+  --accent: #cbd5e1;
 }
 
 /* Reset + base */
@@ -107,9 +109,9 @@ a { color: inherit; text-decoration: none; }
 h2 { font-size: 1.6rem; margin-bottom: 1rem; }
 
 /* About split */
-.split { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: start; }
+.about-swap { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: start; }
 @media (min-width: 900px) {
-  .split { grid-template-columns: 1.3fr .9fr; }
+  .about-swap { grid-template-columns: 1.3fr .9fr; }
 }
 
 /* Portraits */
@@ -120,4 +122,17 @@ h2 { font-size: 1.6rem; margin-bottom: 1rem; }
   padding: 2rem 0;
   border-top: 1px solid var(--border);
   font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Underlined links inside About text */
+.about-text a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+.about-text a:hover {
+  color: var(--accent);
 }
