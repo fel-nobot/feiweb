@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import ThemeToggle from "./ThemeToggle";
 import PhotoCarousel from "../components/PhotoCarousel";
 
 export default function HomePage() {
@@ -25,22 +26,29 @@ export default function HomePage() {
       <header className={`header${scrolled ? " header--scrolled" : ""}`}>
         <div className="container">
           <nav className="navwrap">
-            <span className="nav-wordmark">Felicity Yang</span>
-            <div className="nav-right">
+            <div className="nav-left">
               <Link className="navlink" href="#about">About</Link>
               <Link className="navlink" href="#work">Work</Link>
-              <Link className="navlink" href="#contact">Contact</Link>
+              <Link className="navlink" href="/story">Story</Link>
             </div>
-            <button className="hamburger" aria-label="Menu" onClick={() => setMenuOpen(v => !v)}>
-              <span /><span /><span />
-            </button>
+            <div className="nav-right">
+              <ThemeToggle />
+              <button
+                className="hamburger"
+                aria-label="Menu"
+                onClick={() => setMenuOpen(v => !v)}
+              >
+                <span /><span /><span />
+              </button>
+            </div>
           </nav>
         </div>
         {menuOpen && (
           <div className="nav-sheet">
             <Link href="#about" className="sheetlink" onClick={() => setMenuOpen(false)}>About</Link>
             <Link href="#work" className="sheetlink" onClick={() => setMenuOpen(false)}>Work</Link>
-            <Link href="#contact" className="sheetlink" onClick={() => setMenuOpen(false)}>Contact</Link>
+            <Link href="/story" className="sheetlink" onClick={() => setMenuOpen(false)}>Story</Link>
+            <a href="mailto:qy68@cornell.edu" className="sheetlink" onClick={() => setMenuOpen(false)}>Contact</a>
           </div>
         )}
       </header>
@@ -49,7 +57,6 @@ export default function HomePage() {
       <section className="hero">
         <div className="container">
           <div className="hero-inner">
-            <p className="hero-eyebrow">People · Growth · Strategy</p>
             <h1 className="h1">Scale with clarity.<br />Lead with heart.</h1>
             <p className="hero-sub">
               I'm Felicity — people leader, advisor, and operator.<br />
@@ -57,7 +64,7 @@ export default function HomePage() {
             </p>
             <div className="hero-cta">
               <a href="#about" className="btn-primary">Learn more</a>
-              <a href="mailto:felyqz@gmail.com" className="btn-ghost">Get in touch</a>
+              <a href="mailto:qy68@cornell.edu" className="btn-ghost">Get in touch</a>
             </div>
           </div>
         </div>
@@ -80,8 +87,22 @@ export default function HomePage() {
                 a new understanding of what makes someone feel understood.
               </p>
               <p>
+                I've worked across every level of an organization — from founders building
+                the next embodied AI company, to engineers teaching robots to perceive and
+                move through the physical world, to operators running process improvement,
+                to drivers moving packages from warehouse to customers' doors. What drives
+                me isn't the transaction, it's the understanding. I take the time to
+                understand what the business truly needs, what the work demands, and
+                whether the person in front of me is the right fit. Sometimes the right
+                call is the harder one.
+              </p>
+              <p>
                 At{" "}
-                <a href="https://www.sayweee.com/company/our-story" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://www.sayweee.com/company/our-story"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Weee!
                 </a>
                 , the biggest online grocery serving ethnic communities across the U.S.,
@@ -89,19 +110,12 @@ export default function HomePage() {
                 $1B in revenue. I know how much of that journey lived in the right
                 business decisions.
               </p>
-              <p>
-                I've worked across every level of an organization — from founders
-                building the next embodied AI company, to engineers teaching robots to
-                perceive and move through the physical world, to operators running
-                process improvement, to drivers moving packages from warehouse to
-                customers' doors. What drives me isn't the transaction, it's the
-                understanding. I take the time to understand what the business truly
-                needs, what the work demands, and whether the person in front of me is
-                the right fit. Sometimes the right call is the harder one.
-              </p>
               <p className="about-closing">
                 My work is to help founders make the people decisions that determine
                 whether a business scales or stalls.
+              </p>
+              <p style={{ marginTop: "1.5rem" }}>
+                <Link href="/story" className="story-link">Read Felicity's story →</Link>
               </p>
             </div>
             <div className="about-media">
@@ -131,7 +145,7 @@ export default function HomePage() {
               </p>
               <p className="work-cta-line">
                 If you're a founder building something real,{" "}
-                <a href="mailto:felyqz@gmail.com">I'd love to talk.</a>
+                <a href="mailto:qy68@cornell.edu">I'd love to talk.</a>
               </p>
             </div>
             <div className="work-cards">
@@ -167,27 +181,40 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Contact */}
-      <section id="contact" className="section section--alt">
-        <div className="container">
-          <div className="contact-inner">
-            <p className="section-label">Contact</p>
-            <h2 className="contact-heading">Let's talk.</h2>
-            <p className="contact-sub">
-              Reach out if you're a founder building a team, or if you just want to connect.
-            </p>
-            <a href="mailto:felyqz@gmail.com" className="btn-primary">felyqz@gmail.com</a>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="footer">
         <div className="container footer-inner">
           <span>© {new Date().getFullYear()} Felicity Yang</span>
           <div className="footer-links">
-            <a href="https://www.linkedin.com/in/felyang/" target="_blank" rel="noopener noreferrer" className="navlink">LinkedIn</a>
-            <a href="mailto:felyqz@gmail.com" className="navlink">Email</a>
+            {/* Gmail */}
+            <a
+              href="mailto:felyqz@gmail.com"
+              aria-label="Email Felicity"
+              className="footer-icon-link"
+              title="Email"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.5"/>
+                <path d="M3 7l9 6 9-6" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+              </svg>
+              <span>Gmail</span>
+            </a>
+            {/* Telegram */}
+            <a
+              href="https://t.me/felyang_bot"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Telegram"
+              className="footer-icon-link"
+              title="Telegram"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M21 3L3 10.5l6.75 2.25L21 3z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+                <path d="M9.75 12.75L21 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                <path d="M9.75 12.75v6l3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <span>Telegram</span>
+            </a>
           </div>
         </div>
       </footer>
