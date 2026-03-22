@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import ThemeToggle from "../ThemeToggle";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const worked = [
   { name: "Weee!", desc: "Online grocery / e-commerce" },
@@ -22,94 +22,128 @@ const advised = [
   { name: "Vectors Capital", desc: "Venture capital" },
 ];
 
-const maps = [
+const mapData = [
   {
     id: "map-ca",
     label: "California",
-    center: [38.5, -120.0],
+    center: [38.5, -120.0] as [number, number],
     zoom: 7,
     peaks: [
-      { name: "Silver Peak", loc: "Sierra Nevada", lat: 39.17, lng: -120.23 },
-      { name: "Castle Peak", loc: "Sierra Nevada", lat: 39.37, lng: -120.37 },
-      { name: "Palisades", loc: "Lake Tahoe", lat: 39.19, lng: -120.24 },
-      { name: "Jake's Peak", loc: "Lake Tahoe", lat: 38.96, lng: -120.14 },
-      { name: "Mt. Tallac", loc: "Lake Tahoe", lat: 38.9, lng: -120.1 },
-      { name: "Red Lake Peak", loc: "Carson Pass", lat: 38.67, lng: -119.97 },
-      { name: "Mt. Shasta", loc: "Northern CA", lat: 41.41, lng: -122.19 },
+      { name: "Silver Peak", lat: 39.17, lng: -120.23 },
+      { name: "Castle Peak", lat: 39.37, lng: -120.37 },
+      { name: "Palisades", lat: 39.19, lng: -120.24 },
+      { name: "Jake's Peak", lat: 38.96, lng: -120.14 },
+      { name: "Mt. Tallac", lat: 38.9, lng: -120.1 },
+      { name: "Red Lake Peak", lat: 38.67, lng: -119.97 },
+      { name: "Mt. Shasta", lat: 41.41, lng: -122.19 },
     ],
   },
   {
     id: "map-or",
     label: "Oregon",
-    center: [44.0, -121.7],
-    zoom: 7,
+    center: [44.2, -121.7] as [number, number],
+    zoom: 6,
     peaks: [
-      { name: "Tumalo Mountain", loc: "Bend", lat: 43.99, lng: -121.69 },
-      { name: "The Cone", loc: "Mt. Bachelor", lat: 43.98, lng: -121.69 },
-      { name: "Crater Lake", loc: "Oregon", lat: 42.94, lng: -122.1 },
-      { name: "Mt. Hood", loc: "Oregon", lat: 45.37, lng: -121.7 },
+      { name: "Tumalo Mountain", lat: 43.99, lng: -121.69 },
+      { name: "The Cone", lat: 43.96, lng: -121.72 },
+      { name: "Crater Lake", lat: 42.94, lng: -122.1 },
+      { name: "Mt. Hood", lat: 45.37, lng: -121.7 },
     ],
   },
   {
     id: "map-bc",
     label: "BC, Canada",
-    center: [51.3, -117.5],
+    center: [51.0, -116.5] as [number, number],
     zoom: 7,
     peaks: [
-      { name: "NRC Gully", loc: "Rogers Pass", lat: 51.3, lng: -117.52 },
-      { name: "Ross Peak", loc: "BC, Canada", lat: 51.18, lng: -115.57 },
+      { name: "NRC Gully", lat: 51.3, lng: -117.52 },
+      { name: "Ross Peak", lat: 51.18, lng: -115.57 },
     ],
   },
   {
     id: "map-jp",
     label: "Hokkaido, Japan",
-    center: [43.5, 142.5],
+    center: [43.3, 141.8] as [number, number],
     zoom: 7,
     peaks: [
-      { name: "Asahidake", loc: "Daisetsuzan NP", lat: 43.66, lng: 142.85 },
-      { name: "Mt. Yotei", loc: "Niseko", lat: 42.83, lng: 140.81 },
+      { name: "Asahidake", lat: 43.66, lng: 142.85 },
+      { name: "Mt. Yotei", lat: 42.83, lng: 140.81 },
     ],
   },
 ];
 
-export default function StoryPage() {
+function LeafletMap({ id, center, zoom, peaks }: {
+  id: string;
+  center: [number, number];
+  zoom: number;
+  peaks: { name: string; lat: number; lng: number }[];
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<any>(null);
+
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    const L = (window as any).L;
-    if (!L) return;
+    if (!ref.current || mapRef.current) return;
 
-    maps.forEach((m) => {
-      const el = document.getElementById(m.id);
-      if (!el || (el as any)._leaflet_id) return;
+    import("leaflet").then((L) => {
+      // Fix default icon paths
+      delete (L.Icon.Default.prototype as any)._getIconUrl;
+      L.Icon.Default.mergeOptions({
+        iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+        iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+        shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+      });
 
-      const map = L.map(m.id, { zoomControl: true, scrollWheelZoom: false }).setView(m.center, m.zoom);
+      const map = L.map(ref.current!, {
+        center,
+        zoom,
+        zoomControl: false,
+        scrollWheelZoom: false,
+        attributionControl: false,
+      });
+
+      mapRef.current = map;
+
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "© OpenStreetMap",
         maxZoom: 18,
       }).addTo(map);
 
       const icon = L.divIcon({
         className: "",
-        html: `<div style="width:10px;height:10px;border-radius:50%;background:#BA7517;border:2px solid white;box-shadow:0 0 0 1px #BA7517;"></div>`,
+        html: `<div style="width:10px;height:10px;border-radius:50%;background:#BA7517;border:2px solid white;box-shadow:0 0 0 1.5px #BA7517;cursor:pointer;"></div>`,
         iconSize: [10, 10],
         iconAnchor: [5, 5],
+        popupAnchor: [0, -8],
       });
 
-      m.peaks.forEach((p) => {
+      peaks.forEach((p) => {
         L.marker([p.lat, p.lng], { icon })
           .addTo(map)
-          .bindPopup(`<strong style="font-size:12px">${p.name}</strong><br><span style="font-size:11px;color:#64748b">${p.loc}</span>`, {
-            closeButton: false,
-            offset: [0, -4],
-          });
+          .bindPopup(
+            `<span style="font-size:12px;font-weight:500;font-family:sans-serif">${p.name}</span>`,
+            { closeButton: false, offset: [0, -2] }
+          );
       });
     });
+
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove();
+        mapRef.current = null;
+      }
+    };
   }, []);
 
+  return <div ref={ref} style={{ height: "220px", width: "100%" }} />;
+}
+
+export default function StoryPage() {
   return (
     <main>
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" />
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        crossOrigin=""
+      />
 
       <header className="header header--scrolled">
         <div className="container">
@@ -129,7 +163,7 @@ export default function StoryPage() {
           <p className="section-label">Experiences</p>
 
           {/* Where I've worked */}
-          <h2 className="exp-heading" style={{ marginBottom: "1rem" }}>Where I've worked</h2>
+          <h2 className="exp-heading">Where I've worked</h2>
           <table className="co-table">
             <thead>
               <tr>
@@ -150,7 +184,7 @@ export default function StoryPage() {
           </table>
 
           {/* Who I've advised */}
-          <h2 className="exp-heading" style={{ marginBottom: "1rem" }}>Who I've advised</h2>
+          <h2 className="exp-heading" style={{ marginTop: "2.5rem" }}>Who I've advised</h2>
           <table className="co-table">
             <thead>
               <tr>
@@ -171,12 +205,17 @@ export default function StoryPage() {
           </table>
 
           {/* Mountains */}
-          <h2 className="exp-heading" style={{ margin: "2.5rem 0 1rem" }}>Mountains I've explored</h2>
+          <h2 className="exp-heading" style={{ marginTop: "2.5rem" }}>Mountains I've explored</h2>
           <div className="map-grid">
-            {maps.map((m) => (
+            {mapData.map((m) => (
               <div key={m.id} className="map-card">
                 <div className="map-card-label">{m.label}</div>
-                <div id={m.id} style={{ height: "220px", width: "100%" }} />
+                <LeafletMap
+                  id={m.id}
+                  center={m.center}
+                  zoom={m.zoom}
+                  peaks={m.peaks}
+                />
               </div>
             ))}
           </div>

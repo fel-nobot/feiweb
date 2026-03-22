@@ -230,15 +230,20 @@ a { color: inherit; text-decoration: none; }
 .work-cta-line a:hover { color: var(--accent); }
 
 .work-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
-.work-card { background: var(--alt); padding: 1.25rem; }
-.work-card:last-child { grid-column: 1 / -1; }
-.work-card h3 { font-size: 0.9rem; font-weight: 500; margin: 0 0 0.4rem; color: var(--fg); }
+.work-card {
+  border-left: 2px solid var(--border);
+  padding: 0.4rem 0 0.4rem 1rem;
+  margin-bottom: 0.9rem;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+.work-card:hover { border-left-color: var(--fg); }
+.work-card:last-child { margin-bottom: 0; }
+.work-card h3 { font-size: 0.9rem; font-weight: 500; margin: 0 0 0.3rem; color: var(--fg); }
 .work-card p { font-size: 0.82rem; color: var(--muted); margin: 0; line-height: 1.6; }
 
 /* ── Beyond Work ── */
