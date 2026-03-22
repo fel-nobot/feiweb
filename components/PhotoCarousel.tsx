@@ -3,15 +3,14 @@ import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 
 const IMAGES: { src: string; position: string }[] = [
-  { src: "/portrait1.jpg", position: "center 30%" }, // lake + dogs — keep face + dogs in frame
-  { src: "/portrait2.jpg", position: "center 25%" }, // ocean cliff, green hoodie — keep face visible
-  { src: "/portrait3.jpg", position: "center 20%" }, // red jacket, Banff — portrait, face at top
-  { src: "/portrait4.jpg", position: "center 40%" }, // skiing, smile — center action
-  { src: "/portrait5.jpg", position: "center 50%" }, // group climbing — show full landscape
-  { src: "/portrait6.jpg", position: "center 20%" }, // masked closeup — dramatic close crop
+  { src: "/portrait1.jpg", position: "center 35%" }, // lake + 2 dogs, golden light
+  { src: "/portrait2.jpg", position: "center 20%" }, // red jacket, Banff mountains
+  { src: "/portrait3.jpg", position: "center 50%" }, // group climbing, dramatic landscape
+  { src: "/portrait4.jpg", position: "center 30%" }, // ocean cliff, green hoodie + 2 dogs
+  { src: "/portrait5.jpg", position: "center 20%" }, // masked backcountry closeup
 ];
 
-const INTERVAL_MS = 4000;
+const INTERVAL_MS = 2000;
 
 export default function PhotoCarousel() {
   const images = useMemo(() => IMAGES.filter(Boolean), []);
@@ -20,10 +19,7 @@ export default function PhotoCarousel() {
 
   useEffect(() => {
     if (paused || images.length <= 1) return;
-    const id = setInterval(
-      () => setIndex((i) => (i + 1) % images.length),
-      INTERVAL_MS
-    );
+    const id = setInterval(() => setIndex((i) => (i + 1) % images.length), INTERVAL_MS);
     return () => clearInterval(id);
   }, [paused, images.length]);
 
@@ -42,7 +38,7 @@ export default function PhotoCarousel() {
             position: "absolute",
             inset: 0,
             opacity: i === index ? 1 : 0,
-            transition: "opacity 1s ease-in-out",
+            transition: "opacity 0.8s ease-in-out",
           }}
         >
           <Image
@@ -54,30 +50,19 @@ export default function PhotoCarousel() {
           />
         </div>
       ))}
-
-      {/* dots */}
       {images.length > 1 && (
-        <div
-          style={{
-            position: "absolute",
-            bottom: 12,
-            left: "50%",
-            transform: "translateX(-50%)",
-            display: "flex",
-            gap: 8,
-          }}
-        >
+        <div style={{
+          position: "absolute", bottom: 12, left: "50%",
+          transform: "translateX(-50%)", display: "flex", gap: 8,
+        }}>
           {images.map((_, i) => (
             <span
               key={i}
               onClick={() => setIndex(i)}
               style={{
-                width: 7,
-                height: 7,
-                borderRadius: "50%",
+                width: 7, height: 7, borderRadius: "50%",
                 background: i === index ? "var(--fg)" : "var(--border)",
-                display: "inline-block",
-                cursor: "pointer",
+                display: "inline-block", cursor: "pointer",
                 transition: "background 0.3s",
               }}
             />

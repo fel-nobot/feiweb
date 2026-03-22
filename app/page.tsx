@@ -7,7 +7,7 @@ import PhotoCarousel from "../components/PhotoCarousel";
 
 function GmailIcon() {
   return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.5"/>
       <path d="M3 7l9 6 9-6" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
     </svg>
@@ -16,7 +16,7 @@ function GmailIcon() {
 
 function TelegramIcon() {
   return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M21 3L3 10.5l6.75 2.25L21 3z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
       <path d="M9.75 12.75L21 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
       <path d="M9.75 12.75v6l3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -48,16 +48,14 @@ export default function HomePage() {
             <div className="nav-left">
               <Link className="navlink" href="#about">About</Link>
               <Link className="navlink" href="#work">Work</Link>
-              <Link className="navlink" href="/story">Story</Link>
+              <Link className="navlink" href="/story">Experiences</Link>
             </div>
             <div className="nav-right">
               <a href="mailto:felyqz@gmail.com" className="nav-icon-link" aria-label="Gmail">
-                <GmailIcon />
-                <span className="nav-icon-label">Gmail</span>
+                <GmailIcon /><span className="nav-icon-label">Gmail</span>
               </a>
               <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer" className="nav-icon-link" aria-label="Telegram">
-                <TelegramIcon />
-                <span className="nav-icon-label">Telegram</span>
+                <TelegramIcon /><span className="nav-icon-label">Telegram</span>
               </a>
               <ThemeToggle />
               <button className="hamburger" aria-label="Menu" onClick={() => setMenuOpen(v => !v)}>
@@ -70,14 +68,14 @@ export default function HomePage() {
           <div className="nav-sheet">
             <Link href="#about" className="sheetlink" onClick={() => setMenuOpen(false)}>About</Link>
             <Link href="#work" className="sheetlink" onClick={() => setMenuOpen(false)}>Work</Link>
-            <Link href="/story" className="sheetlink" onClick={() => setMenuOpen(false)}>Story</Link>
+            <Link href="/story" className="sheetlink" onClick={() => setMenuOpen(false)}>Experiences</Link>
             <a href="mailto:felyqz@gmail.com" className="sheetlink" onClick={() => setMenuOpen(false)}>Gmail</a>
             <a href="https://t.me/felyang_bot" className="sheetlink" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>Telegram</a>
           </div>
         )}
       </header>
 
-      {/* Hero — clean, no buttons */}
+      {/* Hero */}
       <section className="hero">
         <div className="container">
           <div className="hero-inner">
@@ -131,7 +129,7 @@ export default function HomePage() {
                 whether a business scales or stalls.
               </p>
               <p style={{ marginTop: "1.5rem" }}>
-                <Link href="/story" className="story-link">Read Felicity's story →</Link>
+                <Link href="/story" className="story-link">See my experiences →</Link>
               </p>
             </div>
             <div className="about-media">
