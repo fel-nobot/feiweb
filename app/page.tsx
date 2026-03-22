@@ -157,12 +157,7 @@ export default function HomePage() {
               <p className="work-closing">
                 I don't give you a framework. I sit with you in the problem.
               </p>
-              <p className="work-cta-line">
-                If you're a founder building something real,{" "}
-                <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer">
-                  I'd love to talk.
-                </a>
-              </p>
+              <p className="work-cta-line">If you're a founder building something real, <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer">I'd love to talk.</a></p>
             </div>
             <div className="work-cards">
               {[
