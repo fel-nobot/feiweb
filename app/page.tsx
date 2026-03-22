@@ -101,11 +101,11 @@ export default function HomePage() {
               </p>
               <p>
                 Then the world opened up. Shanghai. Paris. Lille. New York. The Bay Area.
-                Each place added a layer — a new language, a new way of seeing people,
+                Each place added a layer: a new language, a new way of seeing people,
                 a new understanding of what makes someone feel understood.
               </p>
               <p>
-                I've worked across every level of an organization — from founders building
+                I've worked across every level of an organization, from founders building
                 the next embodied AI company, to engineers teaching robots to perceive and
                 move through the physical world, to operators running process improvement,
                 to drivers moving packages from warehouse to customers' doors. What drives
@@ -126,7 +126,7 @@ export default function HomePage() {
               </p>
               <p className="about-closing">
                 My work is to help founders make the people decisions that determine
-                whether a business scales or stalls.
+                whether a business scales.
               </p>
               <p style={{ marginTop: "1.5rem" }}>
                 <Link href="/story" className="story-link">See my experiences →</Link>
@@ -146,25 +146,22 @@ export default function HomePage() {
           <div className="work-grid">
             <div className="work-intro">
               <p>
-                I read business and understand people — orchestrating the right
-                competencies and the right team to drive real growth. That means
-                spending time understanding founders, industries, and what a business
-                truly needs to move forward. I'm genuinely curious about what drives
-                someone, what they need to do their best work, what they're afraid to
-                say out loud in a meeting. That curiosity is what makes me useful to
-                founders and leaders trying to build something real.
+                I read business and understand people. That means spending time
+                understanding founders, industries, and what a business truly needs to
+                move forward. I'm genuinely curious about what drives someone, what they
+                need to do their best work, what they're afraid to say out loud in a
+                meeting. That curiosity is what makes me useful to founders and leaders
+                trying to build something real.
               </p>
-              <p className="work-closing">
-                I don't give you a framework. I sit with you in the problem.
-              </p>
-              <p className="work-cta-line">If you're a founder building something real, <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer">I'd love to talk.</a></p>
+              <p className="work-closing">I don't give you a framework. I sit with you in the problem. If you're a founder building something real, <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer">I'd love to talk.</a></p>
             </div>
             <div className="work-cards">
               {[
-                { title: "Team building", body: "What to hire and why — then when, where, and how to get them right." },
+                { title: "Team building", body: "What to hire and why. Then when, where, and how to get them right." },
                 { title: "Org design", body: "Structures that drive business outcomes and scale with the company." },
                 { title: "Decisions & conversations", body: "Restructures, exits, change management, and the hard talks that move things forward." },
                 { title: "Growth strategy", body: "People decisions anchored in business outcomes." },
+                { title: "Something else entirely", body: "Not every problem fits a category. Bring me yours." },
               ].map(({ title, body }) => (
                 <div className="work-card" key={title}>
                   <h3>{title}</h3>
@@ -182,11 +179,9 @@ export default function HomePage() {
           <p className="section-label">Beyond work</p>
           <div className="beyond-text">
             <p>
-              When I'm not thinking about people and organizations, I'm outside —
-              hiking, backcountry snowboarding, driving to national parks. I'm also
-              endlessly curious about food and culture. Not just tasting, but
-              understanding where things come from — the land, the history, the people.
-              It's the same instinct I bring to work.
+              When I'm not thinking about people and organizations, I'm outside hiking,
+              backcountry snowboarding, driving to national parks. I'm also endlessly
+              curious about food and culture.
             </p>
           </div>
         </div>
