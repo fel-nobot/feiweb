@@ -237,6 +237,7 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--border);
 }
 .work-card { background: var(--alt); padding: 1.25rem; }
+.work-card:last-child { grid-column: 1 / -1; }
 .work-card h3 { font-size: 0.9rem; font-weight: 500; margin: 0 0 0.4rem; color: var(--fg); }
 .work-card p { font-size: 0.82rem; color: var(--muted); margin: 0; line-height: 1.6; }
 
