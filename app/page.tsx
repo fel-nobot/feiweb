@@ -2,123 +2,108 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import ThemeToggle from "./ThemeToggle";
 import PhotoCarousel from "../components/PhotoCarousel";
 
 export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onResize = () => {
-      if (window.innerWidth >= 900) setMenuOpen(false);
-    };
+    const onResize = () => { if (window.innerWidth >= 900) setMenuOpen(false); };
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
+    window.addEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   return (
     <main>
       {/* Header */}
-      <header className="header">
+      <header className={`header${scrolled ? " header--scrolled" : ""}`}>
         <div className="container">
-          <nav
-            className="navwrap"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-end",
-              height: 68,
-              gap: "1rem",
-            }}
-          >
-            <Link className="navlink" href="#about">
-              About
-            </Link>
-            <Link className="navlink" href="/story">
-              Story
-            </Link>
-            <ThemeToggle />
+          <nav className="navwrap">
+            <span className="nav-wordmark">Felicity Yang</span>
+            <div className="nav-right">
+              <Link className="navlink" href="#about">About</Link>
+              <Link className="navlink" href="#work">Work</Link>
+              <Link className="navlink" href="#contact">Contact</Link>
+            </div>
+            <button className="hamburger" aria-label="Menu" onClick={() => setMenuOpen(v => !v)}>
+              <span /><span /><span />
+            </button>
           </nav>
         </div>
+        {menuOpen && (
+          <div className="nav-sheet">
+            <Link href="#about" className="sheetlink" onClick={() => setMenuOpen(false)}>About</Link>
+            <Link href="#work" className="sheetlink" onClick={() => setMenuOpen(false)}>Work</Link>
+            <Link href="#contact" className="sheetlink" onClick={() => setMenuOpen(false)}>Contact</Link>
+          </div>
+        )}
       </header>
 
       {/* Hero */}
       <section className="hero">
         <div className="container">
-          <h1 className="h1">Scale with clarity. Lead with heart.</h1>
+          <div className="hero-inner">
+            <p className="hero-eyebrow">People · Growth · Strategy</p>
+            <h1 className="h1">Scale with clarity.<br />Lead with heart.</h1>
+            <p className="hero-sub">
+              I'm Felicity — people leader, advisor, and operator.<br />
+              I make people decisions that drive real growth.
+            </p>
+            <div className="hero-cta">
+              <a href="#about" className="btn-primary">Learn more</a>
+              <a href="mailto:felyqz@gmail.com" className="btn-ghost">Get in touch</a>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* About */}
       <section id="about" className="section">
         <div className="container">
-          <h2>About</h2>
-
-          <div className="about-swap" style={{ marginTop: ".75rem" }}>
-            {/* Text */}
+          <p className="section-label">About</p>
+          <div className="about-swap">
             <div className="about-text">
               <p>
-                <a
-                  href="https://www.linkedin.com/in/felyang/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Felicity
-                </a>{" "}
-                has built a global career spanning big retail, deep tech, and
-                high-growth startups. She began with{" "}
-                <a
-                  href="https://sustainability.decathlon.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Decathlon
-                </a>{" "}
-                in China and France before moving into autonomous driving in the
-                U.S., where she partnered with founders and engineers to shape
-                talent strategies during a period of breakthrough innovation.
+                I grew up in Guizhou, China, a place of mountains, mist, and minority
+                cultures most of the world has never heard of. It taught me to be gentle
+                but resilient, logical but imaginative, rooted but always curious.
               </p>
               <p>
-                Felicity holds a{" "}
-                <a
-                  href="https://www.ilr.cornell.edu/programs/graduate-degree-programs/master-industrial-and-labor-relations-milr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Master’s degree in Industrial and Labor Relations
-                </a>{" "}
-                from{" "}
-                <a
-                  href="https://www.cornell.edu/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Cornell University
-                </a>
-                , widely recognized as the leading graduate program for human
-                resources and people strategy in the United States. She also
-                earned dual Bachelor’s degrees in English Literature and Law.
+                Then the world opened up. Shanghai. Paris. Lille. New York. The Bay Area.
+                Each place added a layer — a new language, a new way of seeing people,
+                a new understanding of what makes someone feel understood.
               </p>
               <p>
-                Since 2020, Felicity has been helping scale{" "}
-                <a
-                  href="https://www.sayweee.com/company/our-story"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                At{" "}
+                <a href="https://www.sayweee.com/company/our-story" target="_blank" rel="noopener noreferrer">
                   Weee!
-                </a>{" "}
-                from fewer than 100 to over 1,000 employees, driving 40% annual
-                revenue growth while building a nationwide, multicultural
-                community.
+                </a>
+                , the biggest online grocery serving ethnic communities across the U.S.,
+                I was part of the people leadership that took the business from $40M to
+                $1B in revenue. I know how much of that journey lived in the right
+                business decisions.
               </p>
-
-              <p style={{ marginTop: "1rem" }}>
-                <Link href="/story">Read Felicity’s story →</Link>
+              <p>
+                I've worked across every level of an organization — from founders
+                building the next embodied AI company, to engineers teaching robots to
+                perceive and move through the physical world, to operators running
+                process improvement, to drivers moving packages from warehouse to
+                customers' doors. What drives me isn't the transaction, it's the
+                understanding. I take the time to understand what the business truly
+                needs, what the work demands, and whether the person in front of me is
+                the right fit. Sometimes the right call is the harder one.
+              </p>
+              <p className="about-closing">
+                My work is to help founders make the people decisions that determine
+                whether a business scales or stalls.
               </p>
             </div>
-
-            {/* Portrait Carousel */}
             <div className="about-media">
               <PhotoCarousel />
             </div>
@@ -126,22 +111,84 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* How I Work */}
+      <section id="work" className="section section--alt">
+        <div className="container">
+          <p className="section-label">How I work</p>
+          <div className="work-grid">
+            <div className="work-intro">
+              <p>
+                I read business and understand people — orchestrating the right
+                competencies and the right team to drive real growth. That means
+                spending time understanding founders, industries, and what a business
+                truly needs to move forward. I'm genuinely curious about what drives
+                someone, what they need to do their best work, what they're afraid to
+                say out loud in a meeting. That curiosity is what makes me useful to
+                founders and leaders trying to build something real.
+              </p>
+              <p className="work-closing">
+                I don't give you a framework. I sit with you in the problem.
+              </p>
+              <p className="work-cta-line">
+                If you're a founder building something real,{" "}
+                <a href="mailto:felyqz@gmail.com">I'd love to talk.</a>
+              </p>
+            </div>
+            <div className="work-cards">
+              {[
+                { title: "Team building", body: "Who to hire, when to hire them, and where to find them." },
+                { title: "Org design", body: "Structures that inspire and scale without bureaucracy." },
+                { title: "Hard decisions", body: "Restructures, exits, and change management." },
+                { title: "Growth strategy", body: "People decisions anchored in business outcomes." },
+              ].map(({ title, body }) => (
+                <div className="work-card" key={title}>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Beyond Work */}
+      <section className="section">
+        <div className="container">
+          <p className="section-label">Beyond work</p>
+          <div className="beyond-text">
+            <p>
+              When I'm not thinking about people and organizations, I'm outside —
+              hiking, backcountry snowboarding, driving to national parks. I'm also
+              endlessly curious about food and culture. Not just tasting, but
+              understanding where things come from — the land, the history, the people.
+              It's the same instinct I bring to work.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="section section--alt">
+        <div className="container">
+          <div className="contact-inner">
+            <p className="section-label">Contact</p>
+            <h2 className="contact-heading">Let's talk.</h2>
+            <p className="contact-sub">
+              Reach out if you're a founder building a team, or if you just want to connect.
+            </p>
+            <a href="mailto:felyqz@gmail.com" className="btn-primary">felyqz@gmail.com</a>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="footer">
-        <div
-          className="container"
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            gap: "1rem",
-            flexWrap: "wrap",
-          }}
-        >
+        <div className="container footer-inner">
           <span>© {new Date().getFullYear()} Felicity Yang</span>
-          <a className="navlink" href="mailto:qy68@cornell.edu">
-            Contact
-          </a>
+          <div className="footer-links">
+            <a href="https://www.linkedin.com/in/felyang/" target="_blank" rel="noopener noreferrer" className="navlink">LinkedIn</a>
+            <a href="mailto:felyqz@gmail.com" className="navlink">Email</a>
+          </div>
         </div>
       </footer>
     </main>
