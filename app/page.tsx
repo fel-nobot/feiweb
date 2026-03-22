@@ -166,9 +166,9 @@ export default function HomePage() {
             </div>
             <div className="work-cards">
               {[
-                { title: "Team building", body: "Who to hire, when to hire them, and where to find them." },
-                { title: "Org design", body: "Structures that inspire and scale without bureaucracy." },
-                { title: "Hard decisions", body: "Restructures, exits, and change management." },
+                { title: "Team building", body: "What to hire and why — then when, where, and how to get them right." },
+                { title: "Org design", body: "Structures that drive business outcomes and scale with the company." },
+                { title: "Decisions & conversations", body: "Restructures, exits, change management, and the hard talks that move things forward." },
                 { title: "Growth strategy", body: "People decisions anchored in business outcomes." },
               ].map(({ title, body }) => (
                 <div className="work-card" key={title}>
