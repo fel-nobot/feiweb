@@ -5,6 +5,25 @@ import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import PhotoCarousel from "../components/PhotoCarousel";
 
+function GmailIcon() {
+  return (
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.5"/>
+      <path d="M3 7l9 6 9-6" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+    </svg>
+  );
+}
+
+function TelegramIcon() {
+  return (
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M21 3L3 10.5l6.75 2.25L21 3z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
+      <path d="M9.75 12.75L21 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      <path d="M9.75 12.75v6l3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
 export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -32,12 +51,16 @@ export default function HomePage() {
               <Link className="navlink" href="/story">Story</Link>
             </div>
             <div className="nav-right">
+              <a href="mailto:felyqz@gmail.com" className="nav-icon-link" aria-label="Gmail">
+                <GmailIcon />
+                <span className="nav-icon-label">Gmail</span>
+              </a>
+              <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer" className="nav-icon-link" aria-label="Telegram">
+                <TelegramIcon />
+                <span className="nav-icon-label">Telegram</span>
+              </a>
               <ThemeToggle />
-              <button
-                className="hamburger"
-                aria-label="Menu"
-                onClick={() => setMenuOpen(v => !v)}
-              >
+              <button className="hamburger" aria-label="Menu" onClick={() => setMenuOpen(v => !v)}>
                 <span /><span /><span />
               </button>
             </div>
@@ -48,12 +71,13 @@ export default function HomePage() {
             <Link href="#about" className="sheetlink" onClick={() => setMenuOpen(false)}>About</Link>
             <Link href="#work" className="sheetlink" onClick={() => setMenuOpen(false)}>Work</Link>
             <Link href="/story" className="sheetlink" onClick={() => setMenuOpen(false)}>Story</Link>
-            <a href="mailto:qy68@cornell.edu" className="sheetlink" onClick={() => setMenuOpen(false)}>Contact</a>
+            <a href="mailto:felyqz@gmail.com" className="sheetlink" onClick={() => setMenuOpen(false)}>Gmail</a>
+            <a href="https://t.me/felyang_bot" className="sheetlink" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>Telegram</a>
           </div>
         )}
       </header>
 
-      {/* Hero */}
+      {/* Hero — clean, no buttons */}
       <section className="hero">
         <div className="container">
           <div className="hero-inner">
@@ -62,10 +86,6 @@ export default function HomePage() {
               I'm Felicity — people leader, advisor, and operator.<br />
               I make people decisions that drive real growth.
             </p>
-            <div className="hero-cta">
-              <a href="#about" className="btn-primary">Learn more</a>
-              <a href="mailto:qy68@cornell.edu" className="btn-ghost">Get in touch</a>
-            </div>
           </div>
         </div>
       </section>
@@ -98,11 +118,7 @@ export default function HomePage() {
               </p>
               <p>
                 At{" "}
-                <a
-                  href="https://www.sayweee.com/company/our-story"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="https://www.sayweee.com/company/our-story" target="_blank" rel="noopener noreferrer">
                   Weee!
                 </a>
                 , the biggest online grocery serving ethnic communities across the U.S.,
@@ -145,7 +161,9 @@ export default function HomePage() {
               </p>
               <p className="work-cta-line">
                 If you're a founder building something real,{" "}
-                <a href="mailto:qy68@cornell.edu">I'd love to talk.</a>
+                <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer">
+                  I'd love to talk.
+                </a>
               </p>
             </div>
             <div className="work-cards">
@@ -185,37 +203,6 @@ export default function HomePage() {
       <footer className="footer">
         <div className="container footer-inner">
           <span>© {new Date().getFullYear()} Felicity Yang</span>
-          <div className="footer-links">
-            {/* Gmail */}
-            <a
-              href="mailto:felyqz@gmail.com"
-              aria-label="Email Felicity"
-              className="footer-icon-link"
-              title="Email"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.5"/>
-                <path d="M3 7l9 6 9-6" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-              </svg>
-              <span>Gmail</span>
-            </a>
-            {/* Telegram */}
-            <a
-              href="https://t.me/felyang_bot"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Telegram"
-              className="footer-icon-link"
-              title="Telegram"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M21 3L3 10.5l6.75 2.25L21 3z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/>
-                <path d="M9.75 12.75L21 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                <path d="M9.75 12.75v6l3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              <span>Telegram</span>
-            </a>
-          </div>
         </div>
       </footer>
     </main>
