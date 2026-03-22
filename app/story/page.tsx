@@ -8,9 +8,8 @@ const worked = [
   { name: "Decathlon China", desc: "Sports retail" },
   { name: "Decathlon France", desc: "Sports retail" },
   { name: "AutoX", desc: "Autonomous driving" },
-  { name: "Cyngn", desc: "Autonomous vehicles" },
-  { name: "GCP", desc: "Executive search, technical recruiting & staffing" },
-  { name: "HireIO", desc: "Executive search, technical recruiting & staffing" },
+  { name: "Cyngn", desc: "Industrial automation" },
+  { name: "Independent Consulting", desc: "Executive search, technical recruiting & staffing" },
 ];
 
 const advised = [
@@ -37,7 +36,7 @@ const mountains = [
   { name: "Mt. Yotei", loc: "Hokkaido, Japan" },
   { name: "NRC Gully", loc: "Rogers Pass, BC" },
   { name: "Ross Peak", loc: "BC, Canada" },
-  { name: "Mt. Shasta", loc: "California · base only, had fun" },
+  { name: "Mt. Shasta", loc: "California" },
 ];
 
 export default function StoryPage() {
