@@ -22,21 +22,21 @@ const advised = [
 ];
 
 const mountains = [
-  { name: "Silver Peak", loc: "California" },
-  { name: "Castle Peak", loc: "California" },
-  { name: "Palisades", loc: "California" },
-  { name: "Jake's Peak", loc: "California" },
-  { name: "Mt. Tallac", loc: "California" },
-  { name: "Red Lake Peak", loc: "California" },
-  { name: "Tumalo Mountain", loc: "Oregon" },
-  { name: "The Cone", loc: "Mt. Bachelor, Oregon" },
-  { name: "Crater Lake", loc: "Oregon" },
-  { name: "Mt. Hood", loc: "Oregon" },
-  { name: "Asahidake", loc: "Hokkaido, Japan" },
-  { name: "Mt. Yotei", loc: "Hokkaido, Japan" },
-  { name: "NRC Gully", loc: "Rogers Pass, BC" },
-  { name: "Ross Peak", loc: "BC, Canada" },
-  { name: "Mt. Shasta", loc: "California" },
+  { name: "Silver Peak", loc: "Sierra Nevada / CA, US" },
+  { name: "Castle Peak", loc: "Sierra Nevada / CA, US" },
+  { name: "Palisades", loc: "CA, US" },
+  { name: "Jake's Peak", loc: "Lake Tahoe / CA, US" },
+  { name: "Mt. Tallac", loc: "Lake Tahoe / CA, US" },
+  { name: "Red Lake Peak", loc: "Carson Pass / CA, US" },
+  { name: "Tumalo Mountain", loc: "Bend / OR, US" },
+  { name: "The Cone", loc: "Mt. Bachelor / OR, US" },
+  { name: "Crater Lake", loc: "OR, US" },
+  { name: "Mt. Hood", loc: "Hood River / OR, US" },
+  { name: "Asahidake", loc: "Daisetsuzan / Hokkaido, JP" },
+  { name: "Mt. Yotei", loc: "Niseko / Hokkaido, JP" },
+  { name: "NRC Gully", loc: "Rogers Pass / BC, Canada" },
+  { name: "Ross Peak", loc: "Banff / BC, Canada" },
+  { name: "Mt. Shasta", loc: "CA, US" },
 ];
 
 export default function StoryPage() {
@@ -45,7 +45,7 @@ export default function StoryPage() {
       <header className="header header--scrolled">
         <div className="container">
           <nav className="navwrap">
-            <Link href="/" className="nav-greeting">Hi. I'm Felicity.</Link>
+            <Link href="/" className="nav-greeting">Hi. I'm Felicity. Currently People leader at Weee!, advisor to founders & operators.</Link>
             <div className="nav-right">
               <div className="nav-links">
                 <Link className="navlink" href="/#about">About</Link>

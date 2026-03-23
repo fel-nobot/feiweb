@@ -53,7 +53,7 @@ export default function HomePage() {
       <header className={`header${scrolled ? " header--scrolled" : ""}`}>
         <div className="container">
           <nav className="navwrap">
-            <Link href="/" className="nav-greeting">Hi. I'm Felicity — people, growth & the decisions that matter.</Link>
+            <Link href="/" className="nav-greeting">Hi. I'm Felicity. Currently People leader at Weee!, advisor to founders & operators.</Link>
             <div className="nav-right">
               <div className="nav-links">
                 <Link className="navlink" href="#about">About</Link>
