@@ -153,6 +153,28 @@ a { color: inherit; text-decoration: none; }
 }
 .sheetlink:last-child { border-bottom: none; }
 
+.sheetlink--cta {
+  color: var(--green);
+  font-weight: 500;
+  border-bottom: 1px dashed var(--border);
+}
+
+.sheet-contacts {
+  display: flex;
+  gap: 1.25rem;
+  padding: 0.875rem 0 0.25rem;
+  margin-top: 0.25rem;
+  border-top: 1px solid var(--border);
+}
+.sheet-contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.sheet-contact-link:hover { color: var(--fg); }
+
 @media (min-width: 900px) {
   .nav-links { display: flex !important; }
   .nav-cta { display: inline-block !important; }

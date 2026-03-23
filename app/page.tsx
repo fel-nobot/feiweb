@@ -78,9 +78,11 @@ export default function HomePage() {
             <Link href="#who" className="sheetlink" onClick={() => setMenuOpen(false)}>About</Link>
             <Link href="#work" className="sheetlink" onClick={() => setMenuOpen(false)}>Work</Link>
             <Link href="/story" className="sheetlink" onClick={() => setMenuOpen(false)}>Experiences</Link>
-            <a href="https://t.me/felyang_bot" className="sheetlink" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>Let's talk</a>
-            <a href="mailto:felyqz@gmail.com" className="sheetlink" onClick={() => setMenuOpen(false)}>Gmail</a>
-            <a href="https://t.me/felyang_bot" className="sheetlink" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>Telegram</a>
+            <a href="https://t.me/felyang_bot" className="sheetlink sheetlink--cta" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>Let's talk →</a>
+            <div className="sheet-contacts">
+              <a href="mailto:felyqz@gmail.com" className="sheet-contact-link" onClick={() => setMenuOpen(false)}><GmailIcon /> Gmail</a>
+              <a href="https://t.me/felyang_bot" className="sheet-contact-link" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}><TelegramIcon /> Telegram</a>
+            </div>
           </div>
         )}
       </header>
