@@ -49,11 +49,14 @@ export default function HomePage() {
 
   return (
     <main>
-      {/* Header — greeting left, links + Let's talk right, no Gmail/Telegram */}
+      {/* Header */}
       <header className={`header${scrolled ? " header--scrolled" : ""}`}>
         <div className="container">
           <nav className="navwrap">
-            <Link href="/" className="nav-greeting">Hi. I'm Felicity.<br />Currently People leader at Weee!, advisor to founders & operators.</Link>
+            <Link href="/" className="nav-greeting">
+              Hi. I'm Felicity.<br />
+              Currently People leader at Weee!, advisor to founders & operators.
+            </Link>
             <div className="nav-right">
               <div className="nav-links">
                 <Link className="navlink" href="#about">About</Link>
@@ -137,9 +140,25 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* How I Work */}
-      <section id="work" className="section section--alt">
-        <div className="container">
+      {/* Who I am — Rogers Pass clouds background */}
+      <section className="section section--photo" style={{ backgroundImage: "url('/photo_who.jpg')" }}>
+        <div className="section-photo-overlay" />
+        <div className="container section-photo-content">
+          <p className="section-label">Who I am</p>
+          <div className="beyond-text">
+            <p>
+              When I'm not thinking about people and organizations, I'm outside hiking,
+              backcountry snowboarding, driving to national parks. I'm also endlessly
+              curious about food and culture.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* How I Work — Banff aerial background */}
+      <section id="work" className="section section--photo" style={{ backgroundImage: "url('/photo_work.jpg')" }}>
+        <div className="section-photo-overlay" />
+        <div className="container section-photo-content">
           <p className="section-label">How I work</p>
           <div className="work-grid">
             <div className="work-intro">
@@ -151,7 +170,7 @@ export default function HomePage() {
                 meeting. That curiosity is what makes me useful to founders and leaders
                 trying to build something real.
               </p>
-              <p className="work-closing">I don't give you a framework. I sit with you in the problem. If you're a founder or leader building something real, <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer">I'd love to talk.</a></p>
+              <p className="work-closing">I don't give you a framework. I sit with you in the problem. If you're a founder building something real, <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer">I'd love to talk.</a></p>
             </div>
             <div className="work-items">
               {workItems.map(({ num, title, body }) => (
@@ -168,21 +187,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Beyond Work */}
-      <section className="section">
-        <div className="container">
-          <p className="section-label">Beyond work</p>
-          <div className="beyond-text">
-            <p>
-              When I'm not thinking about people and organizations, I'm outside hiking,
-              backcountry snowboarding, driving to national parks. I'm also endlessly
-              curious about food and culture.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer — Gmail + Telegram moved here */}
+      {/* Footer */}
       <footer className="footer">
         <div className="container footer-inner">
           <span>© {new Date().getFullYear()} Felicity Yang. All rights reserved.</span>

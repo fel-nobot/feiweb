@@ -68,12 +68,14 @@ a { color: inherit; text-decoration: none; }
 }
 
 .nav-greeting {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-style: italic;
   color: var(--fg);
-  white-space: nowrap;
+  white-space: normal;
   opacity: 0.9;
   flex-shrink: 0;
+  max-width: 320px;
+  line-height: 1.4;
 }
 .nav-greeting:hover { opacity: 1; }
 
@@ -342,3 +344,14 @@ a { color: inherit; text-decoration: none; }
   text-underline-offset: 3px;
 }
 .story-back a:hover { color: var(--fg); }
+
+/* ── Background photo sections ── */
+.section-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.75);
+  z-index: 0;
+}
+:root.dark .section-bg-overlay {
+  background: rgba(11, 15, 25, 0.80);
+}
