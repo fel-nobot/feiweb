@@ -104,7 +104,7 @@ export default function HomePage() {
           <div className="about-swap">
             <div className="about-text">
               <p>
-                I grew up in Guizhou, China, a place of mountains, mist, and minority
+                I grew up in Guizhou (贵州), China, a place of mountains, mist, and minority
                 cultures most of the world has never heard of. It taught me to be gentle
                 but resilient, logical but imaginative, rooted but always curious.
               </p>
