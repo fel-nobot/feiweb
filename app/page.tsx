@@ -24,6 +24,14 @@ function TelegramIcon() {
   );
 }
 
+const workItems = [
+  { num: "01", title: "Team building", body: "What to hire and why. Then when, where, and how to get them right." },
+  { num: "02", title: "Org design", body: "Structures that drive business outcomes and scale with the company." },
+  { num: "03", title: "Decisions & conversations", body: "Restructures, exits, change management, and the hard talks that move things forward." },
+  { num: "04", title: "Growth strategy", body: "People decisions anchored in business outcomes." },
+  { num: "05", title: "Something else entirely", body: "Not every problem fits a category. Bring me yours." },
+];
+
 export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -45,17 +53,26 @@ export default function HomePage() {
       <header className={`header${scrolled ? " header--scrolled" : ""}`}>
         <div className="container">
           <nav className="navwrap">
-            <div className="nav-left">
-              <Link className="navlink" href="#about">About</Link>
-              <Link className="navlink" href="#work">Work</Link>
-              <Link className="navlink" href="/story">Experiences</Link>
-            </div>
+            {/* Left: greeting */}
+            <Link href="/" className="nav-greeting">Hi. I'm Felicity.</Link>
+
+            {/* Right: links + icons + CTA */}
             <div className="nav-right">
-              <a href="mailto:felyqz@gmail.com" className="nav-icon-link" aria-label="Gmail">
-                <GmailIcon /><span className="nav-icon-label">Gmail</span>
-              </a>
-              <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer" className="nav-icon-link" aria-label="Telegram">
-                <TelegramIcon /><span className="nav-icon-label">Telegram</span>
+              <div className="nav-links">
+                <Link className="navlink" href="#about">About</Link>
+                <Link className="navlink" href="#work">Work</Link>
+                <Link className="navlink" href="/story">Experiences</Link>
+              </div>
+              <div className="nav-contacts">
+                <a href="mailto:felyqz@gmail.com" className="nav-icon-link" aria-label="Gmail">
+                  <GmailIcon /><span className="nav-icon-label">Gmail</span>
+                </a>
+                <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer" className="nav-icon-link" aria-label="Telegram">
+                  <TelegramIcon /><span className="nav-icon-label">Telegram</span>
+                </a>
+              </div>
+              <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer" className="nav-cta">
+                Let's talk
               </a>
               <ThemeToggle />
               <button className="hamburger" aria-label="Menu" onClick={() => setMenuOpen(v => !v)}>
@@ -155,17 +172,14 @@ export default function HomePage() {
               </p>
               <p className="work-closing">I don't give you a framework. I sit with you in the problem. If you're a founder building something real, <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer">I'd love to talk.</a></p>
             </div>
-            <div className="work-cards">
-              {[
-                { title: "Team building", body: "What to hire and why. Then when, where, and how to get them right." },
-                { title: "Org design", body: "Structures that drive business outcomes and scale with the company." },
-                { title: "Decisions & conversations", body: "Restructures, exits, change management, and the hard talks that move things forward." },
-                { title: "Growth strategy", body: "People decisions anchored in business outcomes." },
-                { title: "Something else entirely", body: "Not every problem fits a category. Bring me yours." },
-              ].map(({ title, body }) => (
-                <div className="work-card" key={title}>
-                  <h3>{title}</h3>
-                  <p>{body}</p>
+            <div className="work-items">
+              {workItems.map(({ num, title, body }) => (
+                <div className="work-item" key={num}>
+                  <span className="work-num">{num}</span>
+                  <div>
+                    <p className="work-item-title">{title}</p>
+                    <p className="work-item-body">{body}</p>
+                  </div>
                 </div>
               ))}
             </div>
