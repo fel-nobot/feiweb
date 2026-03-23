@@ -52,8 +52,8 @@ export default function StoryPage() {
             </Link>
             <div className="nav-right">
               <div className="nav-links">
-                <Link className="navlink" href="/#who">Who I am</Link>
-                <Link className="navlink" href="/#work">How I work</Link>
+                <Link className="navlink" href="/#who">About</Link>
+                <Link className="navlink" href="/#work">Work</Link>
                 <Link className="navlink" href="/story">Experiences</Link>
               </div>
               <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer" className="nav-cta">
@@ -117,7 +117,17 @@ export default function StoryPage() {
 
       <footer className="footer">
         <div className="container footer-inner">
-          <span>© {new Date().getFullYear()} Felicity Yang</span>
+          <span>© {new Date().getFullYear()} Felicity Yang. All rights reserved.</span>
+          <div style={{ display: "flex", gap: "1.25rem", alignItems: "center" }}>
+            <a href="mailto:felyqz@gmail.com" className="footer-contact-link" aria-label="Gmail">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.5"/><path d="M3 7l9 6 9-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+              <span>Gmail</span>
+            </a>
+            <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer" className="footer-contact-link" aria-label="Telegram">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M21 3L3 10.5l6.75 2.25L21 3z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/><path d="M9.75 12.75L21 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/><path d="M9.75 12.75v6l3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              <span>Telegram</span>
+            </a>
+          </div>
         </div>
       </footer>
     </main>

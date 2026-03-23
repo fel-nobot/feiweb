@@ -25,10 +25,10 @@ function TelegramIcon() {
 }
 
 const workItems = [
-  { num: "01", title: "Team building", body: "What to hire and why. Then when, where, and how to get them right." },
-  { num: "02", title: "Org design", body: "Structures that drive business outcomes and scale with the company." },
+  { num: "01", title: "Team building", body: "Who to hire, and why. Then when, where, and how to get it right." },
+  { num: "02", title: "Org design", body: "Structures that drive outcomes and evolve as the company scales." },
   { num: "03", title: "Decisions & conversations", body: "Restructures, exits, change management, and the hard talks that move things forward." },
-  { num: "04", title: "Growth strategy", body: "People decisions anchored in business outcomes." },
+  { num: "04", title: "Growth strategy", body: "People decisions grounded in business outcomes." },
   { num: "05", title: "Something else entirely", body: "Not every problem fits a category. Bring me yours." },
 ];
 
@@ -59,8 +59,8 @@ export default function HomePage() {
             </Link>
             <div className="nav-right">
               <div className="nav-links">
-                <Link className="navlink" href="#who">Who I am</Link>
-                <Link className="navlink" href="#work">How I work</Link>
+                <Link className="navlink" href="#who">About</Link>
+                <Link className="navlink" href="#work">Work</Link>
                 <Link className="navlink" href="/story">Experiences</Link>
               </div>
               <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer" className="nav-cta">
@@ -75,8 +75,8 @@ export default function HomePage() {
         </div>
         {menuOpen && (
           <div className="nav-sheet">
-            <Link href="#who" className="sheetlink" onClick={() => setMenuOpen(false)}>Who I am</Link>
-            <Link href="#work" className="sheetlink" onClick={() => setMenuOpen(false)}>How I work</Link>
+            <Link href="#who" className="sheetlink" onClick={() => setMenuOpen(false)}>About</Link>
+            <Link href="#work" className="sheetlink" onClick={() => setMenuOpen(false)}>Work</Link>
             <Link href="/story" className="sheetlink" onClick={() => setMenuOpen(false)}>Experiences</Link>
             <a href="https://t.me/felyang_bot" className="sheetlink" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>Let's talk</a>
             <a href="mailto:felyqz@gmail.com" className="sheetlink" onClick={() => setMenuOpen(false)}>Gmail</a>
