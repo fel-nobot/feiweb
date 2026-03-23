@@ -55,7 +55,7 @@ export default function HomePage() {
           <nav className="navwrap">
             <Link href="/" className="nav-greeting">
               Hi. I'm Felicity.<br />
-              Currently People leader at Weee!, advisor to founders & operators.
+              I'm a People leader at Weee!, an operator and advisor to founders.
             </Link>
             <div className="nav-right">
               <div className="nav-links">
