@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import ThemeToggle from "../ThemeToggle";
-import { useEffect, useRef } from "react";
 
 const worked = [
   { name: "Weee!", desc: "Online grocery / e-commerce" },
@@ -22,129 +21,27 @@ const advised = [
   { name: "Vectors Capital", desc: "Venture capital" },
 ];
 
-const mapData = [
-  {
-    id: "map-ca",
-    label: "California",
-    center: [38.5, -120.0] as [number, number],
-    zoom: 7,
-    peaks: [
-      { name: "Silver Peak", lat: 39.17, lng: -120.23 },
-      { name: "Castle Peak", lat: 39.37, lng: -120.37 },
-      { name: "Palisades", lat: 39.19, lng: -120.24 },
-      { name: "Jake's Peak", lat: 38.96, lng: -120.14 },
-      { name: "Mt. Tallac", lat: 38.9, lng: -120.1 },
-      { name: "Red Lake Peak", lat: 38.67, lng: -119.97 },
-      { name: "Mt. Shasta", lat: 41.41, lng: -122.19 },
-    ],
-  },
-  {
-    id: "map-or",
-    label: "Oregon",
-    center: [44.2, -121.7] as [number, number],
-    zoom: 6,
-    peaks: [
-      { name: "Tumalo Mountain", lat: 43.99, lng: -121.69 },
-      { name: "The Cone", lat: 43.96, lng: -121.72 },
-      { name: "Crater Lake", lat: 42.94, lng: -122.1 },
-      { name: "Mt. Hood", lat: 45.37, lng: -121.7 },
-    ],
-  },
-  {
-    id: "map-bc",
-    label: "BC, Canada",
-    center: [51.0, -116.5] as [number, number],
-    zoom: 7,
-    peaks: [
-      { name: "NRC Gully", lat: 51.3, lng: -117.52 },
-      { name: "Ross Peak", lat: 51.18, lng: -115.57 },
-    ],
-  },
-  {
-    id: "map-jp",
-    label: "Hokkaido, Japan",
-    center: [43.3, 141.8] as [number, number],
-    zoom: 7,
-    peaks: [
-      { name: "Asahidake", lat: 43.66, lng: 142.85 },
-      { name: "Mt. Yotei", lat: 42.83, lng: 140.81 },
-    ],
-  },
+const mountains = [
+  { name: "Silver Peak", loc: "California" },
+  { name: "Castle Peak", loc: "California" },
+  { name: "Palisades", loc: "California" },
+  { name: "Jake's Peak", loc: "California" },
+  { name: "Mt. Tallac", loc: "California" },
+  { name: "Red Lake Peak", loc: "California" },
+  { name: "Tumalo Mountain", loc: "Oregon" },
+  { name: "The Cone", loc: "Oregon" },
+  { name: "Crater Lake", loc: "Oregon" },
+  { name: "Mt. Hood", loc: "Oregon" },
+  { name: "Asahidake", loc: "Hokkaido, Japan" },
+  { name: "Mt. Yotei", loc: "Hokkaido, Japan" },
+  { name: "NRC Gully", loc: "Rogers Pass, BC" },
+  { name: "Ross Peak", loc: "BC, Canada" },
+  { name: "Mt. Shasta", loc: "California" },
 ];
-
-function LeafletMap({ id, center, zoom, peaks }: {
-  id: string;
-  center: [number, number];
-  zoom: number;
-  peaks: { name: string; lat: number; lng: number }[];
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const mapRef = useRef<any>(null);
-
-  useEffect(() => {
-    if (!ref.current || mapRef.current) return;
-
-    import("leaflet").then((L) => {
-      // Fix default icon paths
-      delete (L.Icon.Default.prototype as any)._getIconUrl;
-      L.Icon.Default.mergeOptions({
-        iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
-        iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-        shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-      });
-
-      const map = L.map(ref.current!, {
-        center,
-        zoom,
-        zoomControl: false,
-        scrollWheelZoom: false,
-        attributionControl: false,
-      });
-
-      mapRef.current = map;
-
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-        maxZoom: 19,
-      }).addTo(map);
-
-      const icon = L.divIcon({
-        className: "",
-        html: `<div style="width:10px;height:10px;border-radius:50%;background:#BA7517;border:2px solid white;box-shadow:0 0 0 1.5px #BA7517;cursor:pointer;"></div>`,
-        iconSize: [10, 10],
-        iconAnchor: [5, 5],
-        popupAnchor: [0, -8],
-      });
-
-      peaks.forEach((p) => {
-        L.marker([p.lat, p.lng], { icon })
-          .addTo(map)
-          .bindPopup(
-            `<span style="font-size:12px;font-weight:500;font-family:sans-serif">${p.name}</span>`,
-            { closeButton: false, offset: [0, -2] }
-          );
-      });
-    });
-
-    return () => {
-      if (mapRef.current) {
-        mapRef.current.remove();
-        mapRef.current = null;
-      }
-    };
-  }, []);
-
-  return <div ref={ref} style={{ height: "220px", width: "100%" }} />;
-}
 
 export default function StoryPage() {
   return (
     <main>
-      <link
-        rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        crossOrigin=""
-      />
-
       <header className="header header--scrolled">
         <div className="container">
           <nav className="navwrap">
@@ -168,61 +65,48 @@ export default function StoryPage() {
         <div className="container">
           <p className="section-label">Experiences</p>
 
-          {/* Where I've worked */}
-          <h2 className="exp-heading">Where I've worked</h2>
-          <table className="co-table">
-            <thead>
-              <tr>
-                <th>Company</th>
-                <th>Industry</th>
-              </tr>
-            </thead>
-            <tbody>
-              {worked.map(({ name, desc }) => (
-                <tr key={name}>
-                  <td className="co-name">{name}</td>
-                  <td className="co-desc">{desc}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="exp-grid">
+            {/* Where I've worked */}
+            <div className="exp-col">
+              <p className="exp-col-label">Where I've worked</p>
+              <ul className="exp-list">
+                {worked.map(({ name, desc }) => (
+                  <li key={name} className="exp-item">
+                    <span className="exp-name">{name}</span>
+                    <span className="exp-desc">{desc}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Who I've advised */}
-          <h2 className="exp-heading" style={{ marginTop: "2.5rem" }}>Who I've advised</h2>
-          <table className="co-table">
-            <thead>
-              <tr>
-                <th>Company</th>
-                <th>Industry</th>
-              </tr>
-            </thead>
-            <tbody>
-              {advised.map(({ name, desc }) => (
-                <tr key={name}>
-                  <td className="co-name">{name}</td>
-                  <td className="co-desc">{desc}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+            {/* Who I've advised */}
+            <div className="exp-col">
+              <p className="exp-col-label">Who I've advised</p>
+              <ul className="exp-list">
+                {advised.map(({ name, desc }) => (
+                  <li key={name} className="exp-item">
+                    <span className="exp-name">{name}</span>
+                    <span className="exp-desc">{desc}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Mountains */}
-          <h2 className="exp-heading" style={{ marginTop: "2.5rem" }}>Mountains I've explored</h2>
-          <div className="map-grid">
-            {mapData.map((m) => (
-              <div key={m.id} className="map-card">
-                <div className="map-card-label">{m.label}</div>
-                <LeafletMap
-                  id={m.id}
-                  center={m.center}
-                  zoom={m.zoom}
-                  peaks={m.peaks}
-                />
-              </div>
-            ))}
+            {/* Mountains */}
+            <div className="exp-col">
+              <p className="exp-col-label">Mountains I've explored</p>
+              <ul className="exp-list">
+                {mountains.map(({ name, loc }) => (
+                  <li key={name} className="exp-item">
+                    <span className="exp-name">{name}</span>
+                    <span className="exp-desc">{loc}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          <p className="story-back" style={{ marginTop: "3rem" }}>
+          <p className="story-back" style={{ marginTop: "4rem" }}>
             <Link href="/">← Back to home</Link>
           </p>
         </div>
