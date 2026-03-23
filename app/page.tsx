@@ -54,13 +54,12 @@ export default function HomePage() {
         <div className="container">
           <nav className="navwrap">
             <Link href="/" className="nav-greeting">
-              Hi. I'm Felicity.<br />
-              Currently People leader at Weee!, advisor to founders & operators.
+              Hi. I'm Felicity.<span className="nav-greeting-sub"><br />Currently People leader at Weee!, advisor to founders &amp; operators.</span>
             </Link>
             <div className="nav-right">
               <div className="nav-links">
-                <Link className="navlink" href="#about">About</Link>
-                <Link className="navlink" href="#work">Work</Link>
+                <Link className="navlink" href="#who">Who I am</Link>
+                <Link className="navlink" href="#work">How I work</Link>
                 <Link className="navlink" href="/story">Experiences</Link>
               </div>
               <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer" className="nav-cta">
@@ -75,10 +74,12 @@ export default function HomePage() {
         </div>
         {menuOpen && (
           <div className="nav-sheet">
-            <Link href="#about" className="sheetlink" onClick={() => setMenuOpen(false)}>About</Link>
-            <Link href="#work" className="sheetlink" onClick={() => setMenuOpen(false)}>Work</Link>
+            <Link href="#who" className="sheetlink" onClick={() => setMenuOpen(false)}>Who I am</Link>
+            <Link href="#work" className="sheetlink" onClick={() => setMenuOpen(false)}>How I work</Link>
             <Link href="/story" className="sheetlink" onClick={() => setMenuOpen(false)}>Experiences</Link>
             <a href="https://t.me/felyang_bot" className="sheetlink" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>Let's talk</a>
+            <a href="mailto:felyqz@gmail.com" className="sheetlink" onClick={() => setMenuOpen(false)}>Gmail</a>
+            <a href="https://t.me/felyang_bot" className="sheetlink" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>Telegram</a>
           </div>
         )}
       </header>
@@ -93,10 +94,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* About */}
-      <section id="about" className="section">
+      {/* Who I am — merged About + Beyond */}
+      <section id="who" className="section">
         <div className="container">
-          <p className="section-label">About</p>
+          <p className="section-label">Who I am</p>
           <div className="about-swap">
             <div className="about-text">
               <p>
@@ -129,6 +130,11 @@ export default function HomePage() {
                 $1B in revenue. I know how much of that journey lived in the right
                 business decisions.
               </p>
+              <p>
+                When I'm not thinking about people and organizations, I'm outside hiking,
+                backcountry snowboarding, driving to national parks. I'm also endlessly
+                curious about food and culture.
+              </p>
               <p style={{ marginTop: "1.5rem" }}>
                 <Link href="/story" className="story-link">See my experiences →</Link>
               </p>
@@ -140,25 +146,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Who I am — Rogers Pass clouds background */}
-      <section className="section section--photo" style={{ backgroundImage: "url('/photo_who.jpg')" }}>
-        <div className="section-photo-overlay" />
-        <div className="container section-photo-content">
-          <p className="section-label">Who I am</p>
-          <div className="beyond-text">
-            <p>
-              When I'm not thinking about people and organizations, I'm outside hiking,
-              backcountry snowboarding, driving to national parks. I'm also endlessly
-              curious about food and culture.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* How I Work — Banff aerial background */}
-      <section id="work" className="section section--photo" style={{ backgroundImage: "url('/photo_work.jpg')" }}>
-        <div className="section-photo-overlay" />
-        <div className="container section-photo-content">
+      {/* How I Work */}
+      <section id="work" className="section section--alt">
+        <div className="container">
           <p className="section-label">How I work</p>
           <div className="work-grid">
             <div className="work-intro">
