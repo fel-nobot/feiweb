@@ -366,8 +366,8 @@ a { color: inherit; text-decoration: none; }
   .section { padding: 3.5rem 0; }
   .section-label { margin: 0 0 2rem; }
 
-  /* Nav greeting — first line only on mobile */
-  .nav-greeting { font-size: 0.75rem; white-space: nowrap; max-width: 160px; overflow: hidden; text-overflow: ellipsis; }
+  /* Nav greeting — wrap naturally on mobile */
+  .nav-greeting { font-size: 0.7rem; white-space: normal; max-width: 55vw; overflow: visible; line-height: 1.4; }
 
   /* About — photo on top, smaller height */
   .about-media { height: 320px; }
@@ -396,7 +396,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 @media (max-width: 480px) {
-  .nav-greeting { font-size: 0.72rem; max-width: 160px; line-height: 1.35; }
+  .nav-greeting { font-size: 0.68rem; max-width: 55vw; line-height: 1.35; }
   .h1 { font-size: clamp(1.6rem, 8vw, 2.4rem); }
   .hero { padding: 4rem 0 3rem; }
   .section { padding: 3rem 0; }
