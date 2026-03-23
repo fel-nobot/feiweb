@@ -29,7 +29,7 @@ const mountains = [
   { name: "Mt. Tallac", loc: "California" },
   { name: "Red Lake Peak", loc: "California" },
   { name: "Tumalo Mountain", loc: "Oregon" },
-  { name: "The Cone", loc: "Oregon" },
+  { name: "The Cone", loc: "Mt. Bachelor, Oregon" },
   { name: "Crater Lake", loc: "Oregon" },
   { name: "Mt. Hood", loc: "Oregon" },
   { name: "Asahidake", loc: "Hokkaido, Japan" },
@@ -64,11 +64,9 @@ export default function StoryPage() {
       <section className="section">
         <div className="container">
           <p className="section-label">Experiences</p>
-
           <div className="exp-grid">
-            {/* Where I've worked */}
             <div className="exp-col">
-              <p className="exp-col-label">Where I've worked</p>
+              <p className="exp-col-label"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>Where I've worked</p>
               <ul className="exp-list">
                 {worked.map(({ name, desc }) => (
                   <li key={name} className="exp-item">
@@ -78,10 +76,8 @@ export default function StoryPage() {
                 ))}
               </ul>
             </div>
-
-            {/* Who I've advised */}
             <div className="exp-col">
-              <p className="exp-col-label">Who I've advised</p>
+              <p className="exp-col-label"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M9 21h6M12 3a6 6 0 0 1 6 6c0 2.5-1.5 4.5-3 6H9c-1.5-1.5-3-3.5-3-6a6 6 0 0 1 6-6z"/><path d="M9 17h6"/></svg>Who I've advised</p>
               <ul className="exp-list">
                 {advised.map(({ name, desc }) => (
                   <li key={name} className="exp-item">
@@ -91,10 +87,8 @@ export default function StoryPage() {
                 ))}
               </ul>
             </div>
-
-            {/* Mountains */}
             <div className="exp-col">
-              <p className="exp-col-label">Mountains I've explored</p>
+              <p className="exp-col-label"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 20l6-10 4 5 3-4 5 9H3z"/></svg>Mountains I've explored</p>
               <ul className="exp-list">
                 {mountains.map(({ name, loc }) => (
                   <li key={name} className="exp-item">
@@ -105,8 +99,7 @@ export default function StoryPage() {
               </ul>
             </div>
           </div>
-
-          <p className="story-back" style={{ marginTop: "4rem" }}>
+          <p className="story-back" style={{ marginTop: "3rem" }}>
             <Link href="/">← Back to home</Link>
           </p>
         </div>

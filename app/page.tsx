@@ -53,7 +53,7 @@ export default function HomePage() {
       <header className={`header${scrolled ? " header--scrolled" : ""}`}>
         <div className="container">
           <nav className="navwrap">
-            <Link href="/" className="nav-greeting">Hi. I'm Felicity.</Link>
+            <Link href="/" className="nav-greeting">Hi. I'm Felicity — people, growth & the decisions that matter.</Link>
             <div className="nav-right">
               <div className="nav-links">
                 <Link className="navlink" href="#about">About</Link>
@@ -192,15 +192,8 @@ export default function HomePage() {
       {/* Footer — Gmail + Telegram moved here */}
       <footer className="footer">
         <div className="container footer-inner">
-          <span>© {new Date().getFullYear()} Felicity Yang</span>
-          <div className="footer-contacts">
-            <a href="mailto:felyqz@gmail.com" className="footer-contact-link" aria-label="Gmail">
-              <GmailIcon /><span>Gmail</span>
-            </a>
-            <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer" className="footer-contact-link" aria-label="Telegram">
-              <TelegramIcon /><span>Telegram</span>
-            </a>
-          </div>
+          <span>Felicity Yang — people, growth & the decisions that matter.</span>
+          <span style={{ color: "var(--muted)", fontSize: "0.78rem" }}>All rights reserved.</span>
         </div>
       </footer>
     </main>
