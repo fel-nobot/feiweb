@@ -19,6 +19,7 @@ const advised = [
   { name: "Hirect", desc: "Hiring tech" },
   { name: "Roboforce", desc: "Robotics / Physical AI" },
   { name: "Vectors Capital", desc: "Venture capital" },
+  { name: "…", desc: "more to come" },
 ];
 
 const mountains = [
@@ -61,8 +62,14 @@ export default function StoryPage() {
         </div>
       </header>
 
-      <section className="section">
-        <div className="container">
+      <section className="section section--bg" style={{
+        backgroundImage: "url('/photo_experiences.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        position: "relative",
+      }}>
+        <div className="section-bg-overlay" />
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <p className="section-label">Experiences</p>
           <div className="exp-grid">
             <div className="exp-col">
