@@ -53,7 +53,7 @@ export default function HomePage() {
       <header className={`header${scrolled ? " header--scrolled" : ""}`}>
         <div className="container">
           <nav className="navwrap">
-            <Link href="/" className="nav-greeting">Hi. I'm Felicity. Currently People leader at Weee!, advisor to founders & operators.</Link>
+            <Link href="/" className="nav-greeting">Hi. I'm Felicity.<br />Currently People leader at Weee!, advisor to founders & operators.</Link>
             <div className="nav-right">
               <div className="nav-links">
                 <Link className="navlink" href="#about">About</Link>
@@ -85,10 +85,7 @@ export default function HomePage() {
         <div className="container">
           <div className="hero-inner">
             <h1 className="h1">Scale with clarity<br />Lead with heart</h1>
-            <p className="hero-sub">
-              People leader, advisor, and operator.<br />
-              I make people decisions that drive real growth.
-            </p>
+            <p className="hero-sub">I make people decisions that drive real growth.</p>
           </div>
         </div>
       </section>
@@ -128,10 +125,6 @@ export default function HomePage() {
                 I was part of the people leadership that took the business from $40M to
                 $1B in revenue. I know how much of that journey lived in the right
                 business decisions.
-              </p>
-              <p className="about-closing">
-                My work is to help founders make the people decisions that determine
-                whether a business scales.
               </p>
               <p style={{ marginTop: "1.5rem" }}>
                 <Link href="/story" className="story-link">See my experiences →</Link>
@@ -192,8 +185,15 @@ export default function HomePage() {
       {/* Footer — Gmail + Telegram moved here */}
       <footer className="footer">
         <div className="container footer-inner">
-          <span>Felicity Yang — people, growth & the decisions that matter.</span>
-          <span style={{ color: "var(--muted)", fontSize: "0.78rem" }}>All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Felicity Yang. All rights reserved.</span>
+          <div style={{ display: "flex", gap: "1.25rem", alignItems: "center" }}>
+            <a href="mailto:felyqz@gmail.com" className="footer-contact-link" aria-label="Gmail">
+              <GmailIcon /><span>Gmail</span>
+            </a>
+            <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer" className="footer-contact-link" aria-label="Telegram">
+              <TelegramIcon /><span>Telegram</span>
+            </a>
+          </div>
         </div>
       </footer>
     </main>
