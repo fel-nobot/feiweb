@@ -54,7 +54,8 @@ export default function HomePage() {
         <div className="container">
           <nav className="navwrap">
             <Link href="/" className="nav-greeting">
-              Hi. I'm Felicity.<span className="nav-greeting-sub"><br />Currently People leader at Weee!, advisor to founders &amp; operators.</span>
+              Hi. I'm Felicity.<br />
+              Currently People leader at Weee!, advisor to founders & operators.
             </Link>
             <div className="nav-right">
               <div className="nav-links">

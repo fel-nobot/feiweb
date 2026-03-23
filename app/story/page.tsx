@@ -46,11 +46,14 @@ export default function StoryPage() {
       <header className="header header--scrolled">
         <div className="container">
           <nav className="navwrap">
-            <Link href="/" className="nav-greeting">Hi. I'm Felicity. Currently People leader at Weee!, advisor to founders & operators.</Link>
+            <Link href="/" className="nav-greeting">
+              Hi. I'm Felicity.<br />
+              Currently People leader at Weee!, advisor to founders & operators.
+            </Link>
             <div className="nav-right">
               <div className="nav-links">
-                <Link className="navlink" href="/#about">About</Link>
-                <Link className="navlink" href="/#work">Work</Link>
+                <Link className="navlink" href="/#who">Who I am</Link>
+                <Link className="navlink" href="/#work">How I work</Link>
                 <Link className="navlink" href="/story">Experiences</Link>
               </div>
               <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer" className="nav-cta">
