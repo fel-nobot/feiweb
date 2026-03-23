@@ -103,8 +103,8 @@ function LeafletMap({ id, center, zoom, peaks }: {
 
       mapRef.current = map;
 
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 18,
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+        maxZoom: 19,
       }).addTo(map);
 
       const icon = L.divIcon({
@@ -148,12 +148,18 @@ export default function StoryPage() {
       <header className="header header--scrolled">
         <div className="container">
           <nav className="navwrap">
-            <div className="nav-left">
-              <Link className="navlink" href="/#about">About</Link>
-              <Link className="navlink" href="/#work">Work</Link>
-              <Link className="navlink" href="/story">Experiences</Link>
+            <Link href="/" className="nav-greeting">Hi. I'm Felicity.</Link>
+            <div className="nav-right">
+              <div className="nav-links">
+                <Link className="navlink" href="/#about">About</Link>
+                <Link className="navlink" href="/#work">Work</Link>
+                <Link className="navlink" href="/story">Experiences</Link>
+              </div>
+              <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer" className="nav-cta">
+                Let's talk
+              </a>
+              <ThemeToggle />
             </div>
-            <div className="nav-right"><ThemeToggle /></div>
           </nav>
         </div>
       </header>
@@ -169,7 +175,6 @@ export default function StoryPage() {
               <tr>
                 <th>Company</th>
                 <th>Industry</th>
-                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -177,7 +182,6 @@ export default function StoryPage() {
                 <tr key={name}>
                   <td className="co-name">{name}</td>
                   <td className="co-desc">{desc}</td>
-                  <td><span className="co-tag worked">Worked</span></td>
                 </tr>
               ))}
             </tbody>
@@ -190,7 +194,6 @@ export default function StoryPage() {
               <tr>
                 <th>Company</th>
                 <th>Industry</th>
-                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -198,7 +201,6 @@ export default function StoryPage() {
                 <tr key={name}>
                   <td className="co-name">{name}</td>
                   <td className="co-desc">{desc}</td>
-                  <td><span className="co-tag advised">Advised</span></td>
                 </tr>
               ))}
             </tbody>
