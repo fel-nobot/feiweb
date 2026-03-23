@@ -49,27 +49,16 @@ export default function HomePage() {
 
   return (
     <main>
-      {/* Header */}
+      {/* Header — greeting left, links + Let's talk right, no Gmail/Telegram */}
       <header className={`header${scrolled ? " header--scrolled" : ""}`}>
         <div className="container">
           <nav className="navwrap">
-            {/* Left: greeting */}
             <Link href="/" className="nav-greeting">Hi. I'm Felicity.</Link>
-
-            {/* Right: links + icons + CTA */}
             <div className="nav-right">
               <div className="nav-links">
                 <Link className="navlink" href="#about">About</Link>
                 <Link className="navlink" href="#work">Work</Link>
                 <Link className="navlink" href="/story">Experiences</Link>
-              </div>
-              <div className="nav-contacts">
-                <a href="mailto:felyqz@gmail.com" className="nav-icon-link" aria-label="Gmail">
-                  <GmailIcon /><span className="nav-icon-label">Gmail</span>
-                </a>
-                <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer" className="nav-icon-link" aria-label="Telegram">
-                  <TelegramIcon /><span className="nav-icon-label">Telegram</span>
-                </a>
               </div>
               <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer" className="nav-cta">
                 Let's talk
@@ -86,8 +75,7 @@ export default function HomePage() {
             <Link href="#about" className="sheetlink" onClick={() => setMenuOpen(false)}>About</Link>
             <Link href="#work" className="sheetlink" onClick={() => setMenuOpen(false)}>Work</Link>
             <Link href="/story" className="sheetlink" onClick={() => setMenuOpen(false)}>Experiences</Link>
-            <a href="mailto:felyqz@gmail.com" className="sheetlink" onClick={() => setMenuOpen(false)}>Gmail</a>
-            <a href="https://t.me/felyang_bot" className="sheetlink" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>Telegram</a>
+            <a href="https://t.me/felyang_bot" className="sheetlink" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>Let's talk</a>
           </div>
         )}
       </header>
@@ -96,9 +84,9 @@ export default function HomePage() {
       <section className="hero">
         <div className="container">
           <div className="hero-inner">
-            <h1 className="h1">Scale with clarity.<br />Lead with heart.</h1>
+            <h1 className="h1">Scale with clarity<br />Lead with heart</h1>
             <p className="hero-sub">
-              I'm Felicity — people leader, advisor, and operator.<br />
+              People leader, advisor, and operator.<br />
               I make people decisions that drive real growth.
             </p>
           </div>
@@ -170,7 +158,7 @@ export default function HomePage() {
                 meeting. That curiosity is what makes me useful to founders and leaders
                 trying to build something real.
               </p>
-              <p className="work-closing">I don't give you a framework. I sit with you in the problem. If you're a founder building something real, <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer">I'd love to talk.</a></p>
+              <p className="work-closing">I don't give you a framework. I sit with you in the problem. If you're a founder or leader building something real, <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer">I'd love to talk.</a></p>
             </div>
             <div className="work-items">
               {workItems.map(({ num, title, body }) => (
@@ -201,10 +189,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Footer — Gmail + Telegram moved here */}
       <footer className="footer">
         <div className="container footer-inner">
           <span>© {new Date().getFullYear()} Felicity Yang</span>
+          <div className="footer-contacts">
+            <a href="mailto:felyqz@gmail.com" className="footer-contact-link" aria-label="Gmail">
+              <GmailIcon /><span>Gmail</span>
+            </a>
+            <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer" className="footer-contact-link" aria-label="Telegram">
+              <TelegramIcon /><span>Telegram</span>
+            </a>
+          </div>
         </div>
       </footer>
     </main>
