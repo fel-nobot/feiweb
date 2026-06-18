@@ -4,8 +4,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import PhotoCarousel from "../components/PhotoCarousel";
-import CommandCenterDemo from "../components/CommandCenterDemo";
-import OffboardingTrackerDemo from "../components/OffboardingTrackerDemo";
 
 function GmailIcon() {
   return (
@@ -94,7 +92,6 @@ export default function HomePage() {
         <div className="container">
           <div className="hero-inner">
             <h1 className="h1">Scale with clarity<br />Lead with heart</h1>
-            <p className="hero-sub">I make people decisions that drive real growth.</p>
           </div>
         </div>
       </section>
@@ -233,19 +230,6 @@ export default function HomePage() {
                 intake, automatic routing, notifications, SLA tracking, and executive
                 dashboards. Current modules: Onboarding, Offboarding, Change ticketing.
               </p>
-            </div>
-          </div>
-
-          <div className="build-showcase">
-            <div className="showcase-block">
-              <p className="showcase-title">Transformation Command Center</p>
-              <p className="showcase-sub">Interactive org chart and impact analytics</p>
-              <CommandCenterDemo />
-            </div>
-            <div className="showcase-block">
-              <p className="showcase-title">Offboarding Tracker</p>
-              <p className="showcase-sub">Case pipeline with per-case completion checklist</p>
-              <OffboardingTrackerDemo />
             </div>
           </div>
         </div>
