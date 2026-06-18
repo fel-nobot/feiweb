@@ -22,36 +22,22 @@ type Person = {
 };
 
 const PEOPLE: Record<string, Person> = {
-  ceo: { role: "Chief Executive", dept: "Executive", area: "Exec", status: "stay", kids: ["ops", "merch", "mkt", "pt", "sc"] },
+  ceo: { role: "Chief Executive", dept: "Executive", area: "Exec", status: "stay", kids: ["com", "ops", "grw", "plt"] },
 
-  ops: { role: "VP, Operations", dept: "Operations", area: "Operations", status: "stay", kids: ["ops-d1", "ops-d2", "ops-m1"] },
-  "ops-d1": { role: "Director, Fulfillment", dept: "Fulfillment", area: "Operations", status: "stay", kids: ["ops-i1", "ops-i2"] },
-  "ops-i1": { role: "Operations Manager", dept: "Fulfillment", area: "Operations", status: "stay", kids: [] },
-  "ops-i2": { role: "Operations Manager II", dept: "Fulfillment", area: "Operations", status: "eliminated", kids: [] },
-  "ops-d2": { role: "Director, Logistics", dept: "Logistics", area: "Operations", status: "moved", newManager: "sc", kids: ["ops-i3"] },
-  "ops-i3": { role: "Logistics Coordinator", dept: "Logistics", area: "Operations", status: "stay", kids: [] },
-  "ops-m1": { role: "Manager, Facilities", dept: "Facilities", area: "Operations", status: "pending", kids: [] },
+  com: { role: "VP, Commercial", dept: "Commercial", area: "Commercial", status: "stay", kids: ["com-1", "com-2"] },
+  "com-1": { role: "Director, Category", dept: "Commercial", area: "Commercial", status: "stay", kids: [] },
+  "com-2": { role: "Manager, Partnerships", dept: "Commercial", area: "Commercial", status: "eliminated", kids: [] },
 
-  merch: { role: "VP, Merchandising", dept: "Merchandising", area: "Merchandising", status: "stay", kids: ["merch-d1", "merch-m1"] },
-  "merch-d1": { role: "Director, Buying", dept: "Buying", area: "Merchandising", status: "stay", kids: ["merch-i1", "merch-i2"] },
-  "merch-i1": { role: "Category Buyer", dept: "Buying", area: "Merchandising", status: "stay", kids: [] },
-  "merch-i2": { role: "Category Buyer", dept: "Buying", area: "Merchandising", status: "eliminated", kids: [] },
-  "merch-m1": { role: "Manager, Strategy", dept: "Strategy", area: "Merchandising", status: "moved", newManager: "pt", kids: [] },
+  ops: { role: "VP, Operations", dept: "Operations", area: "Operations", status: "stay", kids: ["ops-1", "ops-2"] },
+  "ops-1": { role: "Director, Fulfillment", dept: "Operations", area: "Operations", status: "stay", kids: [] },
+  "ops-2": { role: "Lead, Logistics", dept: "Operations", area: "Operations", status: "moved", newManager: "plt", kids: [] },
 
-  mkt: { role: "VP, Marketing", dept: "Marketing", area: "Marketing", status: "stay", kids: ["mkt-d1", "mkt-m1"] },
-  "mkt-d1": { role: "Director, Growth", dept: "Growth", area: "Marketing", status: "stay", kids: ["mkt-i1"] },
-  "mkt-i1": { role: "Growth Marketer", dept: "Growth", area: "Marketing", status: "stay", kids: [] },
-  "mkt-m1": { role: "Manager, Content", dept: "Content", area: "Marketing", status: "eliminated", kids: [] },
+  grw: { role: "VP, Growth", dept: "Growth", area: "Growth", status: "stay", kids: ["grw-1"] },
+  "grw-1": { role: "Manager, Lifecycle", dept: "Growth", area: "Growth", status: "pending", kids: [] },
 
-  pt: { role: "VP, Product & Tech", dept: "Product & Tech", area: "Product & Tech", status: "stay", kids: ["pt-d1", "pt-d2"] },
-  "pt-d1": { role: "Director, Product", dept: "Product", area: "Product & Tech", status: "stay", kids: ["pt-i1"] },
-  "pt-i1": { role: "Product Manager", dept: "Product", area: "Product & Tech", status: "pending", kids: [] },
-  "pt-d2": { role: "Director, Engineering", dept: "Engineering", area: "Product & Tech", status: "stay", kids: ["pt-i2", "pt-i3"] },
-  "pt-i2": { role: "Engineering Manager", dept: "Engineering", area: "Product & Tech", status: "stay", kids: [] },
-  "pt-i3": { role: "Senior Engineer", dept: "Engineering", area: "Product & Tech", status: "eliminated", kids: [] },
-
-  sc: { role: "VP, Supply Chain", dept: "Supply Chain", area: "Supply Chain", status: "stay", kids: ["sc-m1"] },
-  "sc-m1": { role: "Manager, Procurement", dept: "Procurement", area: "Supply Chain", status: "stay", kids: [] },
+  plt: { role: "VP, Platform", dept: "Platform", area: "Platform", status: "stay", kids: ["plt-1", "plt-2"] },
+  "plt-1": { role: "Director, Product", dept: "Platform", area: "Platform", status: "stay", kids: [] },
+  "plt-2": { role: "Director, Engineering", dept: "Platform", area: "Platform", status: "eliminated", kids: [] },
 };
 
 const ALL_IDS = Object.keys(PEOPLE);
@@ -89,7 +75,7 @@ const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v
 
 export default function OrgChartDemo() {
   const [mode, setMode] = useState<Mode>("old");
-  const [expanded, setExpanded] = useState<Set<string>>(new Set(["ceo", "ops", "merch", "mkt", "pt", "sc"]));
+  const [expanded, setExpanded] = useState<Set<string>>(new Set(["ceo", "com", "ops", "grw", "plt"]));
   const [query, setQuery] = useState("");
   const [scale, setScale] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
@@ -163,8 +149,7 @@ export default function OrgChartDemo() {
         <div className="orgx-nodewrap">
           <div className={cls} title={title} onMouseDown={(e) => e.stopPropagation()}>
             <span className="orgx-role">{p.role}</span>
-            <span className="orgx-sub">{p.dept} · {p.area}</span>
-            {count > 0 && <span className="orgx-count">{count}</span>}
+            {count > 0 && <span className="orgx-count">{count} reports</span>}
           </div>
           {hasKids && (
             <button

@@ -12,11 +12,10 @@ import OrgChartDemo from "./OrgChartDemo";
 type Dept = { name: string; before: number; after: number };
 
 const DEPTS: Dept[] = [
-  { name: "Operations", before: 142, after: 118 },
-  { name: "Merchandising", before: 96, after: 71 },
-  { name: "Marketing", before: 78, after: 60 },
-  { name: "Supply Chain", before: 64, after: 58 },
-  { name: "Product & Tech", before: 110, after: 96 },
+  { name: "Commercial", before: 128, after: 99 },
+  { name: "Operations", before: 156, after: 121 },
+  { name: "Growth", before: 64, after: 47 },
+  { name: "Platform", before: 92, after: 78 },
 ];
 
 const TOTAL_BEFORE = DEPTS.reduce((s, d) => s + d.before, 0);
@@ -25,18 +24,18 @@ const REDUCTION_PCT = Math.round(((TOTAL_BEFORE - TOTAL_AFTER) / TOTAL_BEFORE) *
 const MAX_BEFORE = Math.max(...DEPTS.map((d) => d.before));
 
 const MOVEMENT = [
-  { label: "Redeployed", count: 34, color: "var(--green)" },
-  { label: "Backfill", count: 9, color: "#3f72a8" },
-  { label: "New HC", count: 12, color: "#c08a2d" },
-  { label: "Closing", count: 41, color: "#b4584f" },
+  { label: "Redeployed", count: 28, color: "var(--green)" },
+  { label: "Backfill", count: 11, color: "#3f72a8" },
+  { label: "New HC", count: 9, color: "#c08a2d" },
+  { label: "Closing", count: 36, color: "#b4584f" },
 ];
 const MAX_MOVE = Math.max(...MOVEMENT.map((m) => m.count));
 
 const TRANSITIONS = [
-  { role: "Category Buyer", from: "Merchandising", to: "Marketplace" },
-  { role: "Demand Planner", from: "Planning", to: "Supply Chain" },
-  { role: "Content Specialist", from: "Marketing", to: "Growth" },
-  { role: "Coordinator", from: "Logistics", to: "Operations" },
+  { role: "Logistics Lead", from: "Operations", to: "Platform" },
+  { role: "Category Buyer", from: "Commercial", to: "Marketplace" },
+  { role: "Lifecycle PM", from: "Growth", to: "Product" },
+  { role: "Demand Analyst", from: "Planning", to: "Supply" },
 ];
 
 function Analysis() {
