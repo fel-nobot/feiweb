@@ -310,6 +310,20 @@ a { color: inherit; text-decoration: none; }
   padding: 1.5rem;
 }
 
+.build-resume { margin: 2.5rem 0 0; }
+.build-resume a {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.55rem 1.4rem;
+  border-radius: 22px;
+  background: var(--green-bg);
+  color: var(--green);
+  border: 1px solid var(--green-border);
+  transition: background 0.2s, transform 0.1s;
+}
+.build-resume a:hover { background: var(--green-border); transform: translateY(-1px); }
+
 /* Showcase blocks (live demos) */
 .build-showcase {
   margin-top: 3rem;

@@ -193,8 +193,7 @@ export default function HomePage() {
         <div className="container">
           <p className="section-label">What I build</p>
           <p className="build-intro">
-            Some of what I've built with AI. Shown as structure only, with names and
-            numbers left out, the real work runs in production.
+            Some of what I've built with AI, running in production today.
           </p>
 
           <div className="build-grid">
@@ -232,6 +231,12 @@ export default function HomePage() {
               </p>
             </div>
           </div>
+
+          <p className="build-resume">
+            <a href="/resume.html" target="_blank" rel="noopener noreferrer">
+              See my full resume →
+            </a>
+          </p>
         </div>
       </section>
 
