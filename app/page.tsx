@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import PhotoCarousel from "../components/PhotoCarousel";
 import CommandCenterDemo from "../components/CommandCenterDemo";
+import OffboardingTrackerDemo from "../components/OffboardingTrackerDemo";
 
 function GmailIcon() {
   return (
@@ -199,8 +200,8 @@ export default function HomePage() {
             numbers left out, the real work runs in production.
           </p>
 
-          <div className="build-feature">
-            <div className="build-feature-head">
+          <div className="build-grid">
+            <div className="build-card">
               <p className="build-card-title">Transformation Command Center</p>
               <p className="build-card-desc">
                 A real-time web app that ran a company-wide reorg end to end. Interactive
@@ -209,10 +210,6 @@ export default function HomePage() {
                 planned, and executed in one secured place.
               </p>
             </div>
-            <CommandCenterDemo />
-          </div>
-
-          <div className="build-grid">
             <div className="build-card">
               <p className="build-card-title">Autonomous People Agents</p>
               <p className="build-card-desc">
@@ -228,6 +225,19 @@ export default function HomePage() {
                 Centralized immigration tracker with case timelines, automated reminders,
                 document tracking, reporting, cost tracking, and AI-powered case summaries.
               </p>
+            </div>
+          </div>
+
+          <div className="build-showcase">
+            <div className="showcase-block">
+              <p className="showcase-title">Transformation Command Center</p>
+              <p className="showcase-sub">Interactive org chart and impact analytics</p>
+              <CommandCenterDemo />
+            </div>
+            <div className="showcase-block">
+              <p className="showcase-title">Offboarding Tracker</p>
+              <p className="showcase-sub">Case pipeline with per-case completion checklist</p>
+              <OffboardingTrackerDemo />
             </div>
           </div>
         </div>
