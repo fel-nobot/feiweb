@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import PhotoCarousel from "../components/PhotoCarousel";
+import CommandCenterDemo from "../components/CommandCenterDemo";
 
 function GmailIcon() {
   return (
@@ -124,6 +125,14 @@ export default function HomePage() {
                 call is the harder one.
               </p>
               <p>
+                These days, like many others, I'm also learning and building. When the
+                work needs a tool that doesn't exist yet, I make it: AI agents that take
+                the recurring weight off people operations, applications that turn a messy
+                org change into something you can actually see and run, research workflows
+                that compress weeks into days. I don't just sponsor AI adoption; I build
+                the things the work runs on.
+              </p>
+              <p>
                 At{" "}
                 <a href="https://www.sayweee.com/company/our-story" target="_blank" rel="noopener noreferrer">
                   Weee!
@@ -161,7 +170,8 @@ export default function HomePage() {
                 move forward. I'm genuinely curious about what drives someone, what they
                 need to do their best work, what they're afraid to say out loud in a
                 meeting. That curiosity is what makes me useful to founders and leaders
-                trying to build something real.
+                trying to build something real. And increasingly, I build the tools that
+                make those people decisions faster, clearer, and easier to act on.
               </p>
               <p className="work-closing">I don't give you a framework. I sit with you in the problem. If you're a founder building something real, <a href="https://t.me/felyang_bot" target="_blank" rel="noopener noreferrer">I'd love to talk.</a></p>
             </div>
@@ -175,6 +185,49 @@ export default function HomePage() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What I build */}
+      <section id="build" className="section">
+        <div className="container">
+          <p className="section-label">What I build</p>
+          <p className="build-intro">
+            Some of what I've built with AI. Shown as structure only, with names and
+            numbers left out, the real work runs in production.
+          </p>
+
+          <div className="build-feature">
+            <div className="build-feature-head">
+              <p className="build-card-title">Transformation Command Center</p>
+              <p className="build-card-desc">
+                A real-time web app that ran a company-wide reorg end to end. Interactive
+                org charts, per-leader headcount analytics, and individualized
+                communication dashboards, so a complex, high-stakes change could be seen,
+                planned, and executed in one secured place.
+              </p>
+            </div>
+            <CommandCenterDemo />
+          </div>
+
+          <div className="build-grid">
+            <div className="build-card">
+              <p className="build-card-title">Autonomous People Agents</p>
+              <p className="build-card-desc">
+                5+ custom AI agents automating 8+ recurring workflows across Gmail,
+                Calendar, Drive, and Slack (report reviews, lifecycle documentation,
+                executive reporting, inbox triage), reclaiming ~8–10 hours/week, with
+                human-review guardrails on all outbound communications.
+              </p>
+            </div>
+            <div className="build-card">
+              <p className="build-card-title">Immigration Case Management</p>
+              <p className="build-card-desc">
+                Centralized immigration tracker with case timelines, automated reminders,
+                document tracking, reporting, cost tracking, and AI-powered case summaries.
+              </p>
             </div>
           </div>
         </div>
