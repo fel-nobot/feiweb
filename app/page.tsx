@@ -226,6 +226,14 @@ export default function HomePage() {
                 document tracking, reporting, cost tracking, and AI-powered case summaries.
               </p>
             </div>
+            <div className="build-card">
+              <p className="build-card-title">People Service Ticketing &amp; Workflow Platform</p>
+              <p className="build-card-desc">
+                Unified service portal with ticketing, workflow automation, AI-assisted
+                intake, automatic routing, notifications, SLA tracking, and executive
+                dashboards. Current modules: Onboarding, Offboarding, Change ticketing.
+              </p>
+            </div>
           </div>
 
           <div className="build-showcase">

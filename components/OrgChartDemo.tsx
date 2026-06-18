@@ -65,12 +65,6 @@ function subtreeCount(id: string, mode: Mode): number {
   return (MAP[mode][id] || []).reduce((n, c) => n + 1 + subtreeCount(c, mode), 0);
 }
 
-const AREAS = Array.from(new Set(Object.values(PEOPLE).map((p) => p.area))).filter((a) => a !== "Exec");
-function areaCounts(area: string) {
-  const list = Object.values(PEOPLE).filter((p) => p.area === area);
-  return { before: list.length, after: list.filter((p) => p.status !== "eliminated").length };
-}
-
 const clamp = (v: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, v));
 
 export default function OrgChartDemo() {
@@ -208,19 +202,6 @@ export default function OrgChartDemo() {
         onMouseDown={onDown}
       >
         <div className="orgx-canvas" style={{ transform: `translate(${pan.x}px, ${pan.y}px) scale(${scale})` }}>
-          <div className="orgx-summaries">
-            {AREAS.map((a) => {
-              const { before, after } = areaCounts(a);
-              const pct = Math.round(((before - after) / before) * 100);
-              return (
-                <div className="orgx-sum" key={a}>
-                  <span className="orgx-sum-area">{a}</span>
-                  <span className="orgx-sum-hc">{before} → {after}</span>
-                  <span className={`orgx-sum-pct${pct > 0 ? " down" : ""}`}>{pct > 0 ? `−${pct}%` : "—"}</span>
-                </div>
-              );
-            })}
-          </div>
           <ul className="orgx-tree">{renderNode("ceo")}</ul>
         </div>
         <span className="orgx-hint">Scroll to zoom · drag to pan</span>

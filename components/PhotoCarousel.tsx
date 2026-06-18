@@ -5,7 +5,8 @@ import Image from "next/image";
 const IMAGES: { src: string; position: string }[] = [
   { src: "/portrait1.jpg", position: "center 35%" },
   { src: "/portrait2.jpg", position: "center center" },
-  { src: "/portrait3.jpg", position: "center 50%" },
+  { src: "/portrait3.jpg", position: "center 40%" },
+  { src: "/portrait4.jpg", position: "center 40%" },
 ];
 
 const INTERVAL_MS = 2000;
